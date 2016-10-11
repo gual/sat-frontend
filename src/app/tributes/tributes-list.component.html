@@ -1,0 +1,12 @@
+<table class="table table-striped">
+  <tr>
+    <th>Tributo</th>
+    <th>Ley origen</th>
+    <th>Base imponible</th>
+  </tr>
+  <tr *ngFor="let tribute of tributes">
+    <td>{{tribute.name}}</td>
+    <td>{{tribute.law}}</td>
+    <td>{{tribute.taxable}}</td>
+  </tr>
+</table>
