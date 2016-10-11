@@ -9,7 +9,8 @@ import { TributesComponent } from './tributes/tributes.component';
 import { TributesListComponent } from './tributes/tributes-list.component';
 import { TributeFormComponent } from './tributes/tribute-form.component';
 
-import { TributesService } from './shared/TributesService'
+import { TributesService } from './shared/TributesService';
+import { TributesSearchComponent } from './tributes/tributes-search/tributes-search.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TributesService } from './shared/TributesService'
     HeaderComponent,
     TributesComponent,
     TributesListComponent,
-    TributeFormComponent
+    TributeFormComponent,
+    TributesSearchComponent
   ],
   imports: [
     BrowserModule,
