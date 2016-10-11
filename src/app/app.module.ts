@@ -9,6 +9,8 @@ import { TributesComponent } from './tributes/tributes.component';
 import { TributesListComponent } from './tributes/tributes-list.component';
 import { TributeFormComponent } from './tributes/tribute-form.component';
 
+import { TributesService } from './shared/TributesService'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +24,7 @@ import { TributeFormComponent } from './tributes/tribute-form.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [TributesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
