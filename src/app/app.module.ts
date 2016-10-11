@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TributesComponent } from './tributes/tributes.component';
 import { TributesListComponent } from './tributes/tributes-list.component';
+import { TributeFormComponent } from './tributes/tribute-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     TributesComponent,
-    TributesListComponent
+    TributesListComponent,
+    TributeFormComponent
   ],
   imports: [
     BrowserModule,
