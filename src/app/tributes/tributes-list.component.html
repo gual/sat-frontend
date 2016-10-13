@@ -3,12 +3,11 @@
     <tr>
       <th>Tributo</th>
       <th>Base imponible</th>
-      <th>Excedente</th>
-      <th>Valor</th>
-      <th>Período declaración</th>
-      <th>Período pago</th>
-      <th>Presentación declaración</th>
-      <th>Pago entre</th>
+      <th>Modo cálculo</th>
+      <th>Declaración</th>
+      <th>Límite declaración</th>
+      <th>Pago</th>
+      <th>Límite Pago</th>
       <th>Ley origen</th>
       <th>
         <a class="btn btn-success btn-xs" href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Agregar</a>
@@ -19,7 +18,6 @@
     <tr *ngFor="let tribute of tributes" (click)="onSelected(tribute)">
       <td>{{tribute.name}}</td>
       <td>{{tribute.taxable}}</td>
-      <td></td>
       <td></td>
       <td></td>
       <td></td>
