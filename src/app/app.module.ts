@@ -12,6 +12,10 @@ import { TributeFormComponent } from './tributes/tribute-form.component';
 
 import { TributesService } from './shared/TributesService';
 import { TributesSearchComponent } from './tributes/tributes-search/tributes-search.component';
+import { TaxpayersComponent } from './taxpayers/taxpayers.component';
+import { TaxpayersSearchComponent } from './taxpayers/taxpayers-search.component';
+import { TaxpayerPropertyListComponent } from './taxpayers/taxpayer-property-list/taxpayer-property-list.component';
+import { TaxpayerEstablishmentListComponent } from './taxpayers/taxpayer-establishment-list/taxpayer-establishment-list.component'
 
 @NgModule({
   declarations: [
@@ -21,6 +25,10 @@ import { TributesSearchComponent } from './tributes/tributes-search/tributes-sea
     TributesListComponent,
     TributeFormComponent,
     TributesSearchComponent,
+    TaxpayersComponent,
+    TaxpayersSearchComponent,
+    TaxpayerPropertyListComponent,
+    TaxpayerEstablishmentListComponent
   ],
   imports: [
     BrowserModule,
