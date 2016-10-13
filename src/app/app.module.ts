@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,7 +11,7 @@ import { TributesListComponent } from './tributes/tributes-list.component';
 import { TributeFormComponent } from './tributes/tribute-form.component';
 
 import { TributesService } from './shared/TributesService';
-import { TributesSearchComponent } from './tributes/tributes-search/tributes-search.component'
+import { TributesSearchComponent } from './tributes/tributes-search/tributes-search.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { TributesSearchComponent } from './tributes/tributes-search/tributes-sea
     TributesComponent,
     TributesListComponent,
     TributeFormComponent,
-    TributesSearchComponent
+    TributesSearchComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
   providers: [TributesService],
   bootstrap: [AppComponent]
