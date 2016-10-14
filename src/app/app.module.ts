@@ -9,7 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { TributesComponent } from './tributes/tributes.component';
 import { TributesListComponent } from './tributes/tributes-list.component';
 import { TributeFormComponent } from './tributes/tribute-form.component';
-
 import { TributesService } from './shared/TributesService';
 import { TributesSearchComponent } from './tributes/tributes-search/tributes-search.component';
 import { TaxpayersComponent } from './taxpayers/taxpayers.component';
@@ -21,6 +20,11 @@ import { PropertyComponent } from './taxpayers/property/property.component';
 import { PropertySearchComponent } from './taxpayers/property/property-search.component';
 import { PropertyListComponent } from './taxpayers/property/property-list.component';
 import { PropertyFormComponent } from './taxpayers/property/property-form.component'
+import { PropertyService } from './shared/PropertyService';
+import { EstablishmentComponent } from './taxpayers/establishment/establishment.component';
+import { EstablishmentSearchComponent } from './taxpayers/establishment/establishment-search.component';
+import { EstablishmentListComponent } from './taxpayers/establishment/establishment-list.component';
+import { EstablishmentFormComponent } from './taxpayers/establishment/establishment-form.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +42,11 @@ import { PropertyFormComponent } from './taxpayers/property/property-form.compon
     PropertyComponent,
     PropertySearchComponent,
     PropertyListComponent,
-    PropertyFormComponent
+    PropertyFormComponent,
+    EstablishmentComponent,
+    EstablishmentSearchComponent,
+    EstablishmentListComponent,
+    EstablishmentFormComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,7 @@ import { PropertyFormComponent } from './taxpayers/property/property-form.compon
     HttpModule,
     routing
   ],
-  providers: [TributesService],
+  providers: [TributesService, PropertyService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
