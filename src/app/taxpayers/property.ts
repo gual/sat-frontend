@@ -1,7 +1,8 @@
 import { Owner } from './owner';
+import { Company } from './company';
 
 export interface Property {
     code: string;
-    owner: Owner;
+    owner: Company;
     address: string;
 }

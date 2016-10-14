@@ -37,11 +37,11 @@
       </div>
       <div class="form-group">
         <label for="own_nit">NIT </label>
-        <input class="form-control" type="number" name="dec_since" ngModel required>
+        <input class="form-control" type="text" name="own_nit" ngModel required>
       </div>
     </div>
   </div>
   <button type="submit" class="btn btn-primary">Guardar</button>
   <button type="reset" class="btn btn-success">Limpiar</button>
-  <a [routerLink]="['taxpayers/property']" class="btn btn-info">Regresar</a>
+  <a [routerLink]="['/taxpayers/properties']" class="btn btn-info">Regresar</a>
 </form>

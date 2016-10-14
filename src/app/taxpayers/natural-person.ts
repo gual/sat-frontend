@@ -14,4 +14,8 @@ export class NaturalPerson implements Owner {
     getName() {
         return this.name + " " + this.surname;
     }
+
+    setName(name: string) {
+        this.name = name;
+    }
 }
