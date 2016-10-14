@@ -6,11 +6,10 @@ import { Tribute } from './tribute';
   templateUrl: './tributes.component.html',
 })
 export class TributesComponent implements OnInit {
-  tribute: Tribute = {name: "Nuevo tributo", law: "ley de origen", taxable: 0}
+  // tribute: Tribute = {name: "Nuevo tributo", law: "ley de origen", taxable: 0}
 
   constructor() { }
 
   ngOnInit() {
   }
-
 }

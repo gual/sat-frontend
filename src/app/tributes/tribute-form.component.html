@@ -1,23 +1,131 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Crear Tributo</h3> <i>Esto será una modal</i>
+<h2>Nuevo Tributo</h2>
+<form class="panel" (ngSubmit)="addTribute(f)" #f="ngForm">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">General</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="name">Tributo </label>
+        <input class="form-control" type="text" name="name" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="law">Ley origen </label>
+        <input class="form-control" type="text" name="law" ngModel required>
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <form class="panel" (ngSubmit)="addTribute(f)" #f="ngForm">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Declaración y Pagos</h3>
+    </div>
+    <div class="panel-body">
       <div class="form-group">
-        <label for="name">Tributo: </label>
-        <input class="form-control" required type="text" name="name" ngModel>
+        <label for="dec_periodicity">Periodicidad declaración </label>
+        <input class="form-control" type="text" name="dec_periodicity" ngModel required>
       </div>
       <div class="form-group">
-        <label for="law">Ley origen: </label>
-        <input class="form-control" required type="text" name="law" ngModel>
+        <label for="dec_since">Primer día para declarar </label>
+        <input class="form-control" type="number" name="dec_since" ngModel required>
       </div>
       <div class="form-group">
-        <label for="taxable">Base imponible: </label>
-        <input class="form-control" required type="number" name="taxable" ngModel>
+        <label for="dec_until">Último día para declarar </label>
+        <input class="form-control" type="number" name="dec_until" ngModel required>
       </div>
-      <button type="submit" class="btn btn-primary">Guardar</button>
-      <button type="reset" class="btn btn-success">Limpiar</button>
-    </form>
+      <div class="form-group">
+        <label for="pay_periodicity">Periodicidad pago </label>
+        <input class="form-control" type="text" name="pay_periodicity" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="pay_since">Primer día para pagar </label>
+        <input class="form-control" type="number" name="pay_since" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="pay_until">Último día para pagar </label>
+        <input class="form-control" type="number" name="pay_until" ngModel required>
+      </div>
+    </div>
   </div>
-</div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Base Imponible</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="ti_name">Nombre </label>
+        <input class="form-control" type="text" name="ti_name" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="ti_description">Descripción </label>
+        <input class="form-control" type="text" name="ti_description" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="token">Token </label>
+        <input class="form-control" type="text" name="token" #token ngModel>
+      </div>
+      <a class="btn btn-success btn-xs" (click)="addToken(token.value)" >Agregar token</a>
+      <div>
+        <ul>
+          <li *ngFor="let token of tokens">
+            <h4><span class="label label-success">{{token.name}}</span></h4>
+          </li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label for="ti_formula">Formula </label>
+        <input class="form-control" type="text" name="ti_formula" ngModel required>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Modo de Cálculo</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="c_valid_until">Vigente hasta </label>
+        <input class="form-control" type="text" name="c_valid_until" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="c_fixed_fee">Cuota Fija </label>
+        <input class="form-control" type="text" name="c_fixed_fee" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="c_variable_fee">Cuota Variable </label>
+        <input class="form-control" type="text" name="c_variable_fee" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="c_formula">Formula </label>
+        <input class="form-control" type="text" name="c_formula" ngModel required>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h4 class="panel-title">Determinantes</h4>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="det_description">Nombre </label>
+            <input class="form-control" type="text" name="det_description" #detDescription>
+          </div>
+          <div class="form-group">
+            <label for="det_condition">Condicion </label>
+            <input class="form-control" type="text" name="det_condition" #detCondition>
+          </div>
+          <a class="btn btn-success btn-xs" (click)="addDeterminant(detDescription.value, detCondition.value)" >Agregar determinante</a>
+          <div>
+            <ul>
+              <li *ngFor="let determinant of determinants">
+                {{determinant.description}} - {{determinant.condition}}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="reset" class="btn btn-success">Limpiar</button>
+  <a [routerLink]="['']" class="btn btn-info">Regresar</a>
+</form>
