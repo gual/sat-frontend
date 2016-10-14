@@ -1,0 +1,47 @@
+<h2>Nuevo Inmueble</h2>
+<form class="panel" (ngSubmit)="addProperty(f)" #f="ngForm">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">General</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="code">Código </label>
+        <input class="form-control" type="text" name="code" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="address">Dirección </label>
+        <input class="form-control" type="text" name="address" ngModel required>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Propietario</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <h5> Tipo </h5>
+        <label class="radio-inline">
+          <input type="radio" name="own_type" id="own_type_company" value="company">
+          Compañia
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="own_type" id="own_type_natural" value="naturalPerson">
+          Persona Natural
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="own_name">Nombre/Razón Social </label>
+        <input class="form-control" type="text" name="own_name" ngModel required>
+      </div>
+      <div class="form-group">
+        <label for="own_nit">NIT </label>
+        <input class="form-control" type="number" name="dec_since" ngModel required>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="reset" class="btn btn-success">Limpiar</button>
+  <a [routerLink]="['taxpayers/property']" class="btn btn-info">Regresar</a>
+</form>

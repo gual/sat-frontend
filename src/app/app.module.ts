@@ -16,7 +16,11 @@ import { TaxpayersComponent } from './taxpayers/taxpayers.component';
 import { TaxpayersSearchComponent } from './taxpayers/taxpayers-search.component';
 import { TaxpayerPropertyListComponent } from './taxpayers/taxpayer-property-list/taxpayer-property-list.component';
 import { TaxpayerEstablishmentListComponent } from './taxpayers/taxpayer-establishment-list/taxpayer-establishment-list.component';
-import { TributeDetailComponent } from './tributes/tribute-detail.component'
+import { TributeDetailComponent } from './tributes/tribute-detail.component';
+import { PropertyComponent } from './taxpayers/property/property.component';
+import { PropertySearchComponent } from './taxpayers/property/property-search.component';
+import { PropertyListComponent } from './taxpayers/property/property-list.component';
+import { PropertyFormComponent } from './taxpayers/property/property-form.component'
 
 @NgModule({
   declarations: [
@@ -30,7 +34,11 @@ import { TributeDetailComponent } from './tributes/tribute-detail.component'
     TaxpayersSearchComponent,
     TaxpayerPropertyListComponent,
     TaxpayerEstablishmentListComponent,
-    TributeDetailComponent
+    TributeDetailComponent,
+    PropertyComponent,
+    PropertySearchComponent,
+    PropertyListComponent,
+    PropertyFormComponent
   ],
   imports: [
     BrowserModule,
