@@ -1,0 +1,71 @@
+<h3> {{selectedTribute?.name}} - {{selectedTribute?.originLaw}} </h3>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Declaración y Pagos</h3>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Periodicidad declaración</dt>
+      <dd>{{selectedTribute?.declarationPaymentMode.declarationPeriodicity}}</dd>
+      <dt>Primer día para declarar</dt>
+      <dd>{{selectedTribute?.declarationPaymentMode.declarationSince}}</dd>
+      <dt>Último día para declarar</dt>
+      <dd>{{selectedTribute?.declarationPaymentMode.declarationUntil}}</dd>
+      <dt>Periodicidad pago</dt>
+      <dd>{{selectedTribute?.declarationPaymentMode.paymentPeriodicity}}</dd>
+      <dt>Primer día para pagar</dt>
+      <dd>{{selectedTribute?.declarationPaymentMode.paymentSince}}</dd>
+      <dt>Último día para pagar</dt>
+      <dd>{{selectedTribute?.declarationPaymentMode.paymentUntil}}</dd>
+    </dl>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Base Imponible</h3>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Nombre</dt>
+      <dd>{{selectedTribute?.taxableIncome.name}}</dd>
+      <dt>Descripción</dt>
+      <dd>{{selectedTribute?.taxableIncome.description}}</dd>
+      <dt>Tokens</dt>
+      <dd>
+        <ul>
+          <li *ngFor="let token of selectedTribute?.taxableIncome.tokens">
+           <b>{{token.name}}</b>
+          </li>
+        </ul>
+      </dd>
+      <dt>Formula</dt>
+      <dd>{{selectedTribute?.taxableIncome.formula}}</dd>
+    </dl>
+  </div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Modo de Cálculo</h3>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Vigente hasta</dt>
+      <dd>{{selectedTribute?.calculation.validUntil}}</dd>
+      <dt>Cuota Fija</dt>
+      <dd>{{selectedTribute?.calculation.fixedFee}}</dd>
+      <dt>Cuota Variable</dt>
+      <dd>{{selectedTribute?.calculation.variableFee}}</dd>
+      <dt>Formula</dt>
+      <dd>{{selectedTribute?.calculation.formula}}</dd>
+      <dt>Determinantes</dt>
+      <dd>
+        <ul>
+          <li *ngFor="let determinant of selectedTribute?.determinants">
+            {{determinant.description}} - {{determinant.condition}}
+          </li>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+</div>
+<a [routerLink]="['']" class="btn btn-info">Regresar</a>

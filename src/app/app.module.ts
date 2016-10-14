@@ -15,7 +15,8 @@ import { TributesSearchComponent } from './tributes/tributes-search/tributes-sea
 import { TaxpayersComponent } from './taxpayers/taxpayers.component';
 import { TaxpayersSearchComponent } from './taxpayers/taxpayers-search.component';
 import { TaxpayerPropertyListComponent } from './taxpayers/taxpayer-property-list/taxpayer-property-list.component';
-import { TaxpayerEstablishmentListComponent } from './taxpayers/taxpayer-establishment-list/taxpayer-establishment-list.component'
+import { TaxpayerEstablishmentListComponent } from './taxpayers/taxpayer-establishment-list/taxpayer-establishment-list.component';
+import { TributeDetailComponent } from './tributes/tribute-detail.component'
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TaxpayerEstablishmentListComponent } from './taxpayers/taxpayer-establi
     TaxpayersComponent,
     TaxpayersSearchComponent,
     TaxpayerPropertyListComponent,
-    TaxpayerEstablishmentListComponent
+    TaxpayerEstablishmentListComponent,
+    TributeDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -39,4 +41,8 @@ import { TaxpayerEstablishmentListComponent } from './taxpayers/taxpayer-establi
   providers: [TributesService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(private _tributesService: TributesService) { }
+
+}

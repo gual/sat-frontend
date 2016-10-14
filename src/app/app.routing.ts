@@ -1,10 +1,12 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { TributesComponent } from './tributes/tributes.component';
-import { TaxpayersComponent } from './taxpayers/taxpayers.component';
+import { TributeFormComponent } from './tributes/tribute-form.component';
+import { TributeDetailComponent } from './tributes/tribute-detail.component';
 
 const APP_ROUTES: Routes = [
-    { path: 'taxpayers', component: TaxpayersComponent} ,
+    { path: 'tributes/new', component: TributeFormComponent },
+    { path: 'tributes/detail/:id', component: TributeDetailComponent },
     { path: '', component: TributesComponent} ,
 ];
 
