@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { Tribute } from './tribute';
@@ -15,7 +16,7 @@ export class TributeFormComponent implements OnInit {
   tokens: Token[] = [];
   determinants: Determinant[] = [];
 
-  constructor(private _tributesService: TributesService) { }
+  constructor(private _tributesService: TributesService, private router: Router) { }
 
   ngOnInit() {
     this.tokens = this._tributesService.getTokens();
@@ -24,6 +25,7 @@ export class TributeFormComponent implements OnInit {
 
   addTribute(form: NgForm) {
     this._tributesService.addFromForm(form);
+    this.router.navigate(['/']);
   }
 
   addToken(text: string) {
