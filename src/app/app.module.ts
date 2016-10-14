@@ -21,6 +21,7 @@ import { EstablishmentComponent } from './taxpayers/establishment/establishment.
 import { EstablishmentSearchComponent } from './taxpayers/establishment/establishment-search.component';
 import { EstablishmentListComponent } from './taxpayers/establishment/establishment-list.component';
 import { EstablishmentFormComponent } from './taxpayers/establishment/establishment-form.component';
+import { EstablishmentService } from './shared/EstablishmentService';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { EstablishmentFormComponent } from './taxpayers/establishment/establishm
     HttpModule,
     routing
   ],
-  providers: [TributesService, PropertyService],
+  providers: [TributesService, PropertyService, EstablishmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

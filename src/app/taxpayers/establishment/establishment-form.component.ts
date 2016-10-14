@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+import { EstablishmentService } from '../../shared/EstablishmentService';
 
 @Component({
   selector: 'sf-establishment-form',
@@ -7,9 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstablishmentFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private establishmentService: EstablishmentService, private router: Router) {
+  }
 
   ngOnInit() {
+  }
+
+  addEstablishment(form: NgForm) {
+    this.establishmentService.addFromForm(form);
+    this.router.navigate(['/taxpayers/establishments']);
   }
 
 }
