@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+.dl-horizontal dt {
+    width: 300px;
+}
+
+.dl-horizontal dd {
+    margin-left: 320px;
+}
