@@ -14,13 +14,17 @@ import { TributesService } from '../shared/TributesService';
 })
 export class TributeFormComponent implements OnInit {
   tokens: Token[] = [];
+  cTokens: Token[] = [];
   determinants: Determinant[] = [];
+  subjectDeterminants: Determinant[] = [];
 
   constructor(private _tributesService: TributesService, private router: Router) { }
 
   ngOnInit() {
     this.tokens = this._tributesService.getTokens();
+    this.cTokens = this._tributesService.getCalcTokens();
     this.determinants = this._tributesService.getDeterminants();
+    this.subjectDeterminants = this._tributesService.getSubjectDeterminants();
   }
 
   addTribute(form: NgForm) {
@@ -32,7 +36,15 @@ export class TributeFormComponent implements OnInit {
     this._tributesService.addToken({name: text});
   }
 
+  addCalcToken(text: string) {
+    this._tributesService.addCalcToken({name: text});
+  }
+
   addDeterminant(description: string, condition: string) {
     this._tributesService.addDeterminant({description: description, condition: condition})
+  }
+
+  addSubjectDeterminant(description: string, condition: string) {
+    this._tributesService.addSubjectDeterminant({description: description, condition: condition})
   }
 }

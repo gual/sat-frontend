@@ -22,6 +22,7 @@ import { EstablishmentSearchComponent } from './taxpayers/establishment/establis
 import { EstablishmentListComponent } from './taxpayers/establishment/establishment-list.component';
 import { EstablishmentFormComponent } from './taxpayers/establishment/establishment-form.component';
 import { EstablishmentService } from './shared/EstablishmentService';
+import { DeclarationComponent } from './declaration/declaration.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EstablishmentService } from './shared/EstablishmentService';
     EstablishmentComponent,
     EstablishmentSearchComponent,
     EstablishmentListComponent,
-    EstablishmentFormComponent
+    EstablishmentFormComponent,
+    DeclarationComponent
   ],
   imports: [
     BrowserModule,

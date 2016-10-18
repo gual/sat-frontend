@@ -1,0 +1,41 @@
+<form class="panel" (ngSubmit)="addDeclaration(f)" #f="ngForm">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">Declaración</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-group">
+        <label for="date">Fecha presentación </label>
+        <input class="form-control" type="text" name="date" ngModel required>
+      </div>
+
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h4 class="panel-title">Valor tokens</h4>
+        </div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="token1">Activo </label>
+            <input class="form-control" type="number" name="token1" ngModel required>
+          </div>
+          <div class="form-group">
+            <label for="token2">Activo declarado otros municipios </label>
+            <input class="form-control" type="number" name="token2" ngModel required>
+          </div>
+          <div class="form-group">
+            <label for="token3">Deudas hipotecarias </label>
+            <input class="form-control" type="number" name="token3" ngModel required>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="presenter">Persona que presenta </label>
+        <input class="form-control" type="text" name="presenter" ngModel required>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Guardar</button>
+  <button type="reset" class="btn btn-success">Limpiar</button>
+  <!--<a [routerLink]="['']" class="btn btn-info">Regresar</a>-->
+</form>

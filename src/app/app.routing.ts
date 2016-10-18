@@ -10,6 +10,7 @@ import { PropertyFormComponent } from './taxpayers/property/property-form.compon
 import { EstablishmentComponent } from './taxpayers/establishment/establishment.component';
 import { EstablishmentFormComponent } from './taxpayers/establishment/establishment-form.component';
 
+import { DeclarationComponent } from './declaration/declaration.component';
 
 const APP_ROUTES: Routes = [
     { path: 'taxpayers/properties/new', component: PropertyFormComponent },
@@ -18,6 +19,7 @@ const APP_ROUTES: Routes = [
     { path: 'taxpayers/establishments', component: EstablishmentComponent },
     { path: 'tributes/new', component: TributeFormComponent },
     { path: 'tributes/detail/:id', component: TributeDetailComponent },
+    { path: 'declaration', component: DeclarationComponent },
     { path: '', component: TributesComponent} ,
 ];
 
