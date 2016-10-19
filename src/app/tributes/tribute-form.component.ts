@@ -40,11 +40,11 @@ export class TributeFormComponent implements OnInit {
     this._tributesService.addCalcToken({name: text});
   }
 
-  addDeterminant(description: string, condition: string) {
-    this._tributesService.addDeterminant({description: description, condition: condition})
-  }
+  // addDeterminant(description: string, condition: string) {
+  //   this._tributesService.addDeterminant({description: description, condition: condition})
+  // }
 
-  addSubjectDeterminant(description: string, condition: string) {
-    this._tributesService.addSubjectDeterminant({description: description, condition: condition})
-  }
+  // addSubjectDeterminant(description: string, condition: string) {
+  //   this._tributesService.addSubjectDeterminant({description: description, condition: condition})
+  // }
 }

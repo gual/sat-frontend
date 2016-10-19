@@ -1,241 +1,273 @@
 <h2>Nuevo Tributo</h2>
+<hr />
 <form class="panel" (ngSubmit)="addTribute(f)" #f="ngForm">
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">General</h3>
+      <a data-toggle="collapse" href="#generalPanel">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> General</h3>
+      </a>
     </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <label for="name">Tributo </label>
-        <input class="form-control" type="text" name="name" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="law">Ley origen </label>
-        <input class="form-control" type="text" name="law" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="graceDays">Días de gracia para generar interés </label>
-        <input class="form-control" type="number" name="graceDays" ngModel required>
-      </div>
-
-      <div class="form-group">
-        <label for="subject">Sujeto al que aplica </label>
-        <select name="subject" class="form-control">
-          <option>Establecimientos</option>
-          <option>Inmuebles</option>
-        </select>
-      </div>
-
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h4 class="panel-title">Determinantes de sujeto</h4>
+    <div id="generalPanel" class="panel-collapse collapse in">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="name">Tributo </label>
+          <input class="form-control" type="text" name="name" ngModel required>
         </div>
-        <div class="panel-body">
-          <div class="form-group">
-            <label for="det_description">Nombre </label>
-            <input class="form-control" type="text" name="sub_det_description" #subDetDescription>
-          </div>
-          <div class="form-group">
-            <label for="det_condition">Condicion </label>
-            <input class="form-control" type="text" name="sub_det_condition" #subDetCondition>
-          </div>
-          <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value)" >Agregar determinante</a>
-          <div>
-            <ul>
-              <li *ngFor="let subDeterminant of subjectDeterminants">
-                {{subDeterminant.description}} - {{subDeterminant.condition}}
-              </li>
-            </ul>
-          </div>
+        <div class="form-group">
+          <label for="law">Ley origen </label>
+          <input class="form-control" type="text" name="law" ngModel required>
         </div>
-      </div>
+        <div class="form-group">
+          <label for="graceDays">Días de gracia para generar interés </label>
+          <input class="form-control" type="number" name="graceDays" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Sujeto al que aplica </label>
+          <select name="subject" class="form-control">
+            <option>Establecimientos</option>
+            <option>Inmuebles</option>
+          </select>
+        </div>
 
-    </div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Declaración y Pagos</h3>
-    </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <label for="dec_periodicity">Periodicidad declaración </label>
-        <input class="form-control" type="text" name="dec_periodicity" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="dec_since">Primer día para declarar </label>
-        <input class="form-control" type="number" name="dec_since" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="dec_until">Último día para declarar </label>
-        <input class="form-control" type="number" name="dec_until" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="pay_periodicity">Periodicidad pago </label>
-        <input class="form-control" type="text" name="pay_periodicity" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="pay_since">Primer día para pagar </label>
-        <input class="form-control" type="number" name="pay_since" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="pay_until">Último día para pagar </label>
-        <input class="form-control" type="number" name="pay_until" ngModel required>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Base Imponible</h3>
-    </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <label for="ti_name">Nombre </label>
-        <input class="form-control" type="text" name="ti_name" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="ti_description">Descripción </label>
-        <input class="form-control" type="text" name="ti_description" ngModel required>
-      </div>
-
-      <div class="form-group">
-        <label for="token">Token </label>
-        <input class="form-control" type="text" name="token" #token ngModel>
-      </div>
-      <a class="btn btn-success btn-xs" (click)="addToken(token.value)" >Agregar token</a>
-      <div>
-        <ul>
-          <li *ngFor="let token of tokens">
-            <h4><span class="label label-success">{{token.name}}</span></h4>
-          </li>
-        </ul>
-      </div>
-
-      <div class="form-group">
-        <label for="ti_formula">Formula </label>
-        <input class="form-control" type="text" name="ti_formula" ngModel required>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Tipo de Tarifa</h3>
-    </div>
-    <div class="panel-body">
-      <!--<div class="form-group">
-        <h5> Tipo Tarifa </h5>
-        <label class="radio-inline">
-          <input type="radio" name="own_type" id="own_type_company" value="company">
-          Valor determinado
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="own_type" id="own_type_natural" value="naturalPerson">
-          Progresiva por rango
-        </label>
-      </div>-->
-        <ul class="nav nav-pills">
-          <li class="active"><a href="#tab-det" data-toggle="tab">Valor determinado</a></li>
-          <li><a href="#tab-prog" data-toggle="tab">Progresiva por rango</a></li>
-        </ul>
-        <hr/>
-        <div class="tab-content">
-          <div class="tab-pane fade in active" id="tab-det">1</div>
-          <div class="tab-pane fade" id="tab-prog">
-            <div class="form-group">
-              <label for="det_description">Nombre </label>
-              <input class="form-control" type="text" name="sub_det_description" #subDetDescription>
-            </div>
-            <div class="form-group">
-              <label for="det_condition">Limite Superior </label>
-              <input class="form-control" type="number" name="sub_det_condition">
-            </div>
-            <div class="form-group">
-              <label for="det_condition">Limite Inferior </label>
-              <input class="form-control" type="number" name="sub_det_condition">
-            </div>
-            <div class="form-group">
-              <label for="det_condition">Cuota fija </label>
-              <input class="form-control" type="number" name="sub_det_condition">
-            </div>
-            <div class="form-group">
-              <label for="det_condition">Cuota variable </label>
-              <input class="form-control" type="number" name="sub_det_condition">
-            </div>
-            <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value)" >
-              Agregar rango
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <a data-toggle="collapse" href="#subjectDeterminants">
+              <h4 class="panel-title" style="color:white;">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Determinantes de sujeto
+              </h4>
             </a>
-            <div>
-              <ul>
-                <!--<li *ngFor="let subDeterminant of subjectDeterminants">
-                  {{subDeterminant.description}} - {{subDeterminant.condition}}
-                </li>-->
-              </ul>
+          </div>
+          <div id="subjectDeterminants" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-group">
+                <label for="sub_det_description">Nombre </label>
+                <input class="form-control" type="text" name="sub_det_description" #subDetDescription>
+              </div>
+              <div class="form-group">
+                <label for="sub_det_condition">Condicion </label>
+                <input class="form-control" type="text" name="sub_det_condition" #subDetCondition>
+              </div>
+              <div class="form-group">
+                <label for="sub_det_value">Valor </label>
+                <input class="form-control" type="number" name="sub_det_value" #subDetValue>
+              </div>
+              <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value)" >Agregar determinante</a>
+              <div>
+                <ul>
+                  <li *ngFor="let subDeterminant of subjectDeterminants">
+                    {{subDeterminant.description}} - {{subDeterminant.condition}}
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
+
+      </div>
     </div>
   </div>
+
   <div class="panel panel-primary">
     <div class="panel-heading">
-      <h3 class="panel-title">Tarifa</h3>
+      <a data-toggle="collapse" href="#declarationPanel">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Declaración y Pagos</h3>
+      </a>
     </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <label for="c_valid_until">Vigente hasta </label>
-        <input class="form-control" type="text" name="c_valid_until" ngModel>
-      </div>
-      <!--<div class="form-group">
-        <label for="c_fixed_fee">Cuota Fija </label>
-        <input class="form-control" type="text" name="c_fixed_fee" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="c_variable_fee">Cuota Variable </label>
-        <input class="form-control" type="text" name="c_variable_fee" ngModel required>
-      </div>-->
-
-      <div class="form-group">
-        <label for="token">Token </label>
-        <input class="form-control" type="text" name="c_token" #cToken ngModel>
-      </div>
-      <a class="btn btn-success btn-xs" (click)="addCalcToken(cToken.value)" >Agregar token</a>
-      <div>
-        <ul>
-          <li *ngFor="let ctoken of cTokens">
-            <h4><span class="label label-success">{{ctoken.name}}</span></h4>
-          </li>
-        </ul>
-      </div>
-
-      <div class="form-group">
-        <label for="c_formula">Formula </label>
-        <input class="form-control" type="text" name="c_formula" ngModel required>
-      </div>
-
-      <div class="panel panel-warning">
-        <div class="panel-heading">
-          <h4 class="panel-title">Determinantes</h4>
+    <div id="declarationPanel" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="dec_periodicity">Periodicidad declaración </label>
+          <select name="dec_periodicity" class="form-control">
+            <option value="Mensual">Mensual</option>
+            <option value="Trimestral">Trimestral</option>
+            <option value="Anual">Anual</option>
+          </select>
         </div>
-        <div class="panel-body">
-          <div class="form-group">
-            <label for="det_description">Nombre </label>
-            <input class="form-control" type="text" name="det_description" #detDescription>
-          </div>
-          <div class="form-group">
-            <label for="det_condition">Condicion </label>
-            <input class="form-control" type="text" name="det_condition" #detCondition>
-          </div>
-          <a class="btn btn-warning btn-xs" (click)="addDeterminant(detDescription.value, detCondition.value)" >Agregar determinante</a>
-          <div>
-            <ul>
-              <li *ngFor="let determinant of determinants">
-                {{determinant.description}} - {{determinant.condition}}
-              </li>
-            </ul>
-          </div>
+        <div class="form-group">
+          <label for="dec_since">Primer día para declarar </label>
+          <input class="form-control" type="number" name="dec_since" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="dec_until">Último día para declarar </label>
+          <input class="form-control" type="number" name="dec_until" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="pay_periodicity">Periodicidad pago </label>
+          <select name="pay_periodicity" class="form-control">
+            <option value="Mensual">Mensual</option>
+            <option value="Trimestral">Trimestral</option>
+            <option value="Anual">Anual</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="pay_since">Primer día para pagar </label>
+          <input class="form-control" type="number" name="pay_since" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="pay_until">Último día para pagar </label>
+          <input class="form-control" type="number" name="pay_until" ngModel required>
         </div>
       </div>
-
     </div>
   </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <a data-toggle="collapse" href="#taxablePanel">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Base Imponible</h3>
+      </a>
+    </div>
+    <div id="taxablePanel" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="ti_name">Nombre </label>
+          <input class="form-control" type="text" name="ti_name" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="ti_description">Descripción </label>
+          <input class="form-control" type="text" name="ti_description" ngModel required>
+        </div>
+
+        <div class="form-group">
+          <label for="token">Token </label>
+          <input class="form-control" type="text" name="token" #token ngModel>
+        </div>
+        <a class="btn btn-success btn-xs" (click)="addToken(token.value)" >Agregar token</a>
+        <div>
+          <ul>
+            <li *ngFor="let token of tokens">
+              <h4><span class="label label-success">{{token.name}}</span></h4>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <label for="ti_formula">Formula </label>
+          <input class="form-control" type="text" name="ti_formula" ngModel required>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <a data-toggle="collapse" href="#ratePanel">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Tarifa</h3>
+      </a>
+    </div>
+    <div id="ratePanel" class="panel-collapse collapse">
+      <div class="panel-body">
+        <!--<div class="form-group">
+          <label for="rate_type">Tipo </label>
+          <select name="rate_type" class="form-control">
+            <option>Valor determinado</option>
+            <option>Progresiva por rango</option>
+          </select>
+        </div>-->
+        <!--<div class="form-group">
+          <label for="c_valid_until">Vigente hasta </label>
+          <input class="form-control" type="text" name="c_valid_until" ngModel>
+        </div>-->
+
+        <div class="form-group">
+          <label for="token">Token </label>
+          <input class="form-control" type="text" name="c_token" #cToken ngModel>
+        </div>
+        <a class="btn btn-success btn-xs" (click)="addCalcToken(cToken.value)" >Agregar token</a>
+        <div>
+          <ul>
+            <li *ngFor="let ctoken of cTokens">
+              <h4><span class="label label-success">{{ctoken.name}}</span></h4>
+            </li>
+          </ul>
+        </div>
+
+        <div class="form-group">
+          <label for="c_formula">Formula </label>
+          <input class="form-control" type="text" name="c_formula" ngModel required>
+        </div>
+
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <a data-toggle="collapse" href="#rateDetPanel">
+              <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Determinantes de tarifa
+              </h4>
+            </a>
+          </div>
+          <div id="rateDetPanel" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-group">
+                <label for="det_description">Nombre </label>
+                <input class="form-control" type="text" name="det_description" #detDescription>
+              </div>
+              <div class="form-group">
+                <label for="det_condition">Condicion </label>
+                <input class="form-control" type="text" name="det_condition" #detCondition>
+              </div>
+              <div class="form-group">
+                <label for="det_value">Valor </label>
+                <input class="form-control" type="number" name="det_value" #detCondition>
+              </div>
+              <a class="btn btn-warning btn-xs" (click)="addDeterminant(detDescription.value, detCondition.value)" >Agregar determinante</a>
+              <div>
+                <ul>
+                  <li *ngFor="let determinant of determinants">
+                    {{determinant.description}} - {{determinant.condition}}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <a data-toggle="collapse" href="#rateRangePanel">
+              <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Rangos
+              </h4>
+            </a>
+          </div>
+          <div id="rateRangePanel" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-group">
+                <label for="det_description">Nombre </label>
+                <input class="form-control" type="text" name="sub_det_description" #subDetDescription>
+              </div>
+              <div class="form-group">
+                <label for="det_condition">Limite Superior </label>
+                <input class="form-control" type="number" name="sub_det_condition">
+              </div>
+              <div class="form-group">
+                <label for="det_condition">Limite Inferior </label>
+                <input class="form-control" type="number" name="sub_det_condition">
+              </div>
+              <div class="form-group">
+                <label for="det_condition">Cuota fija </label>
+                <input class="form-control" type="number" name="sub_det_condition">
+              </div>
+              <div class="form-group">
+                <label for="det_condition">Cuota variable </label>
+                <input class="form-control" type="number" name="sub_det_condition">
+              </div>
+              <a class="btn btn-info btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value)" >
+                Agregar rango
+              </a>
+              <div>
+                <ul>
+                  <!--<li *ngFor="let subDeterminant of subjectDeterminants">
+                    {{subDeterminant.description}} - {{subDeterminant.condition}}
+                  </li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <button type="submit" class="btn btn-primary">Guardar</button>
   <button type="reset" class="btn btn-success">Limpiar</button>
   <a [routerLink]="['']" class="btn btn-info">Regresar</a>

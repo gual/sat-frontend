@@ -3,7 +3,7 @@ import { Determinant } from './determinant';
 import { TaxableIncome } from './taxable-income';
 import { Rate } from './rate';
 
-export interface Tax {
+export interface Tribute {
     id: number;
     name: string;
     originLaw: string;

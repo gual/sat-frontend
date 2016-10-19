@@ -8,7 +8,7 @@ import { TributesService } from '../shared/TributesService';
   templateUrl: './tributes-list.component.html',
 })
 export class TributesListComponent implements OnInit {
-  tributes: Tribute[] = []
+  tributes: any[] = []
 
   constructor(private _tributesService: TributesService) {
     // this.tributes = _tributesService.getAll();
@@ -17,7 +17,12 @@ export class TributesListComponent implements OnInit {
   ngOnInit() {
     this._tributesService.getAll()
     .subscribe(
-      (data) => console.log(data)
+      data => {
+        console.log(data);
+        for (let key in data){
+          this.tributes.push(data[key]);
+        }
+      }
     );
   }
 
