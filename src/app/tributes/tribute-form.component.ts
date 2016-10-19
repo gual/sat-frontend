@@ -14,16 +14,18 @@ import { TributesService } from '../shared/TributesService';
 })
 export class TributeFormComponent implements OnInit {
   tokens: Token[] = [];
-  cTokens: Token[] = [];
-  determinants: Determinant[] = [];
-  subjectDeterminants: Determinant[] = [];
+  rateTokens: Token[] = [];
+  rateRanges: Token[] = [];
+  rateDeterminants: any[] = [];
+  subjectDeterminants: any[] = [];
 
   constructor(private _tributesService: TributesService, private router: Router) { }
 
   ngOnInit() {
     this.tokens = this._tributesService.getTokens();
-    this.cTokens = this._tributesService.getCalcTokens();
-    this.determinants = this._tributesService.getDeterminants();
+    this.rateTokens = this._tributesService.getRateTokens();
+    this.rateDeterminants = this._tributesService.getRateDeterminants();
+    this.rateRanges = this._tributesService.getRateRanges();
     this.subjectDeterminants = this._tributesService.getSubjectDeterminants();
   }
 
@@ -36,15 +38,19 @@ export class TributeFormComponent implements OnInit {
     this._tributesService.addToken({name: text});
   }
 
-  addCalcToken(text: string) {
-    this._tributesService.addCalcToken({name: text});
+  addRateToken(text: string) {
+    this._tributesService.addRateToken({name: text});
   }
 
-  // addDeterminant(description: string, condition: string) {
-  //   this._tributesService.addDeterminant({description: description, condition: condition})
-  // }
+  addRateDeterminant(description: string, condition: string, value: string) {
+    this._tributesService.addRateDeterminant({name: description, condition: condition, value: value})
+  }
 
-  // addSubjectDeterminant(description: string, condition: string) {
-  //   this._tributesService.addSubjectDeterminant({description: description, condition: condition})
-  // }
+  addSubjectDeterminant(description: string, condition: string, value: string) {
+    this._tributesService.addSubjectDeterminant({name: description, condition: condition, value: value})
+  }
+
+  addRateRange(description: string, upper: string, lower: string, fixed: string, variable: string) {
+    this._tributesService.addRateRange({description: description, upper: upper, lower: lower, fixed: fixed, variable: variable});
+  }
 }

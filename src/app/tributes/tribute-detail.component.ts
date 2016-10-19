@@ -10,10 +10,12 @@ import { TributesService } from '../shared/TributesService';
   styles: []
 })
 export class TributeDetailComponent implements OnInit {
-  selectedTribute: Tribute;
+  selectedTribute: any;
 
   constructor(private tributesService: TributesService, currentRoute: ActivatedRoute) {
-    this.selectedTribute = this.tributesService.getTribute(currentRoute.snapshot.params['id'])
+    this.tributesService.getTribute(currentRoute.snapshot.params['id']).subscribe(
+      (data => this.selectedTribute = data)
+    )
   }
 
   ngOnInit() {

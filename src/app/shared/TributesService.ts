@@ -13,9 +13,10 @@ import { Token } from '../tributes/token';
 
 let tributes: Tribute[] = [];
 let tokens: Token[] = [];
-let cTokens: Token[] = [];
-let determinants: Determinant[] = [];
-let subjectDeterminants: Determinant[] = [];
+let rateTokens: Token[] = [];
+let rateRanges: Token[] = [];
+let rateDeterminants: any[] = [];
+let subjectDeterminants: any[] = [];
 
 @Injectable()
 export class TributesService{
@@ -30,48 +31,87 @@ export class TributesService{
     );
   }
 
-  getTribute(id: number) : Tribute {
-    return tributes[id];
+  getTribute(id: string) : any {
+    return this.http.get('https://mutis-prototype.firebaseio.com/tributes/' + id + '.json').map(
+      (response: Response) => response.json()
+    );
   }
 
   getTokens() : Token[] {
     return tokens;
   }
 
-  getCalcTokens() : Token[] {
-    return cTokens;
+  getRateTokens() : Token[] {
+    return rateTokens;
   }
 
-  getDeterminants() : Determinant[] {
-    return determinants;
+  getRateDeterminants() : any[] {
+    return rateDeterminants;
   }
 
-  getSubjectDeterminants() : Determinant[] {
+  getRateRanges() : any[] {
+    return rateRanges;
+  }
+
+  getSubjectDeterminants() : any[] {
     return subjectDeterminants;
   }
 
-  add(tribute: Tribute) {
-      tributes.push(tribute);
-      console.log(tributes);
+  add(tribute: any) {
+    const body = JSON.stringify(tribute);
+    const headers = new Headers();
+    headers.append('Content-type', 'application/json');
+
+    return this.http.post('https://mutis-prototype.firebaseio.com/tributes.json', body, {headers: headers})
   }
 
   addToken(token: Token) {
     tokens.push(token);
   }
 
-  addCalcToken(token: Token) {
-    cTokens.push(token);
+  addRateToken(token: Token) {
+    rateTokens.push(token);
   }
 
-  addDeterminant(determinant: Determinant) {
-    determinants.push(determinant);
+  addRateRange(range: any) {
+    rateRanges.push(range);
   }
 
-  addSubjectDeterminant(determinant: Determinant) {
+  addRateDeterminant(determinant: any) {
+    rateDeterminants.push(determinant);
+  }
+
+  addSubjectDeterminant(determinant: any) {
     subjectDeterminants.push(determinant);
   }
 
   addFromForm(form: NgForm) {
+    let tribute = {
+      name: form.value.name,
+      origin_law: form.value.law,
+      taxable_subject: form.value.subject,
+      grace_days: form.value.graceDays,
+      taxable_income: {
+        name: form.value.ti_name,
+        description: form.value.ti_description,
+        tokens: tokens,
+        formula: form.value.ti_formula
+      },
+      rate: {
+        tokens: rateTokens,
+        formula: form.value.rate_formula,
+        determinants: rateDeterminants
+      },
+      declaration_payment_mode: {
+        declaration_periodicity: form.value.dec_periodicity,
+        declaration_since: form.value.dec_since,
+        declaration_until: form.value.dec_until,
+        payment_periodicity: form.value.pay_periodicity,
+        payment_since: form.value.pay_since,
+        payment_until: form.value.pay_until
+      },
+      determinants: subjectDeterminants
+    }
   //   let taxableIncome: TaxableIncome =
   //     {name: form.value.ti_name, description: form.value.ti_description, formula: form.value.ti_formula, tokens: tokens}
 
@@ -86,9 +126,14 @@ export class TributesService{
   //     { id: tributes.length, name: form.value.name, originLaw: form.value.law, taxableIncome: taxableIncome,
   //       calculation: calculation, declarationPaymentMode: decPayMode, determinants: determinants }
 
-  //   this.add(tribute);
+    this.add(tribute).subscribe(
+      (resp: Response) => console.log(resp.json())
+    );
 
-  //   tokens = [];
-  //   determinants = [];
+    tokens = [];
+    rateTokens = [];
+    rateRanges = [];
+    rateDeterminants = [];
+    subjectDeterminants = [];
   }
 }

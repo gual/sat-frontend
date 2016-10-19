@@ -1,6 +1,7 @@
 <h2>Nuevo Tributo</h2>
 <hr />
 <form class="panel" (ngSubmit)="addTribute(f)" #f="ngForm">
+
   <div class="panel panel-primary">
     <div class="panel-heading">
       <a data-toggle="collapse" href="#generalPanel">
@@ -23,9 +24,9 @@
         </div>
         <div class="form-group">
           <label for="subject">Sujeto al que aplica </label>
-          <select name="subject" class="form-control">
-            <option>Establecimientos</option>
-            <option>Inmuebles</option>
+          <select name="subject" class="form-control" ngModel required>
+            <option value="Establecimientos">Establecimientos</option>
+            <option value="Inmuebles">Inmuebles</option>
           </select>
         </div>
 
@@ -49,15 +50,28 @@
               </div>
               <div class="form-group">
                 <label for="sub_det_value">Valor </label>
-                <input class="form-control" type="number" name="sub_det_value" #subDetValue>
+                <input class="form-control" type="text" name="sub_det_value" #subDetValue>
               </div>
-              <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value)" >Agregar determinante</a>
-              <div>
-                <ul>
-                  <li *ngFor="let subDeterminant of subjectDeterminants">
-                    {{subDeterminant.description}} - {{subDeterminant.condition}}
-                  </li>
-                </ul>
+              <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value, subDetValue.value)" >
+                Agregar determinante
+              </a>
+              <div *ngIf="subjectDeterminants.length > 0">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Descripción</th>
+                      <th>Condición</th>
+                      <th>Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let subDeterminant of subjectDeterminants">
+                      <td>{{subDeterminant.name}}</td>
+                      <td>{{subDeterminant.condition}}</td>
+                      <td>{{subDeterminant.value}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -170,21 +184,21 @@
         </div>-->
 
         <div class="form-group">
-          <label for="token">Token </label>
-          <input class="form-control" type="text" name="c_token" #cToken ngModel>
+          <label for="rateToken">Token </label>
+          <input class="form-control" type="text" name="rateToken" #rateToken>
         </div>
-        <a class="btn btn-success btn-xs" (click)="addCalcToken(cToken.value)" >Agregar token</a>
+        <a class="btn btn-success btn-xs" (click)="addRateToken(rateToken.value)" >Agregar token</a>
         <div>
           <ul>
-            <li *ngFor="let ctoken of cTokens">
-              <h4><span class="label label-success">{{ctoken.name}}</span></h4>
+            <li *ngFor="let rateToken of rateTokens">
+              <h4><span class="label label-success">{{rateToken.name}}</span></h4>
             </li>
           </ul>
         </div>
 
         <div class="form-group">
-          <label for="c_formula">Formula </label>
-          <input class="form-control" type="text" name="c_formula" ngModel required>
+          <label for="rate_formula">Formula </label>
+          <input class="form-control" type="text" name="rate_formula" ngModel required>
         </div>
 
         <div class="panel panel-warning">
@@ -198,24 +212,37 @@
           <div id="rateDetPanel" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="form-group">
-                <label for="det_description">Nombre </label>
-                <input class="form-control" type="text" name="det_description" #detDescription>
+                <label for="rate_det_description">Nombre </label>
+                <input class="form-control" type="text" name="rate_det_description" #rateDetDescription>
               </div>
               <div class="form-group">
-                <label for="det_condition">Condicion </label>
-                <input class="form-control" type="text" name="det_condition" #detCondition>
+                <label for="rate_det_condition">Condicion </label>
+                <input class="form-control" type="text" name="rate_det_condition" #rateDetCondition>
               </div>
               <div class="form-group">
-                <label for="det_value">Valor </label>
-                <input class="form-control" type="number" name="det_value" #detCondition>
+                <label for="rate_det_value">Valor </label>
+                <input class="form-control" type="text" name="rate_det_value" #rateDetValue>
               </div>
-              <a class="btn btn-warning btn-xs" (click)="addDeterminant(detDescription.value, detCondition.value)" >Agregar determinante</a>
-              <div>
-                <ul>
-                  <li *ngFor="let determinant of determinants">
-                    {{determinant.description}} - {{determinant.condition}}
-                  </li>
-                </ul>
+              <a class="btn btn-warning btn-xs" (click)="addRateDeterminant(rateDetDescription.value, rateDetCondition.value, rateDetValue.value)" >
+                Agregar determinante
+              </a>
+              <div *ngIf="rateDeterminants.length > 0">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Descripción</th>
+                      <th>Condición</th>
+                      <th>Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let rateDeterminant of rateDeterminants">
+                      <td>{{rateDeterminant.name}}</td>
+                      <td>{{rateDeterminant.condition}}</td>
+                      <td>{{rateDeterminant.value}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -232,34 +259,53 @@
           <div id="rateRangePanel" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="form-group">
-                <label for="det_description">Nombre </label>
-                <input class="form-control" type="text" name="sub_det_description" #subDetDescription>
+                <label for="rate_range_description">Nombre </label>
+                <input class="form-control" type="text" name="rate_range_description" #rateRangeDescription>
               </div>
               <div class="form-group">
-                <label for="det_condition">Limite Superior </label>
-                <input class="form-control" type="number" name="sub_det_condition">
+                <label for="rate_range_upper">Limite Superior </label>
+                <input class="form-control" type="number" name="rate_range_upper" #rateRangeUpper>
               </div>
               <div class="form-group">
-                <label for="det_condition">Limite Inferior </label>
-                <input class="form-control" type="number" name="sub_det_condition">
+                <label for="rate_range_lower">Limite Inferior </label>
+                <input class="form-control" type="number" name="rate_range_lower" #rateRangeLower>
               </div>
               <div class="form-group">
-                <label for="det_condition">Cuota fija </label>
-                <input class="form-control" type="number" name="sub_det_condition">
+                <label for="rate_range_fixed">Cuota fija </label>
+                <input class="form-control" type="number" name="rate_range_fixed" #rateRangeFixed>
               </div>
               <div class="form-group">
-                <label for="det_condition">Cuota variable </label>
-                <input class="form-control" type="number" name="sub_det_condition">
+                <label for="rate_range_var">Cuota variable </label>
+                <input class="form-control" type="number" name="rate_range_var" #rateRangeVariable>
               </div>
-              <a class="btn btn-info btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value)" >
+              <a class="btn btn-info btn-xs"
+                (click)="addRateRange(
+                  rateRangeDescription.value, rateRangeUpper.value, rateRangeLower.value,
+                  rateRangeFixed.value, rateRangeVariable.value
+                )" >
                 Agregar rango
               </a>
-              <div>
-                <ul>
-                  <!--<li *ngFor="let subDeterminant of subjectDeterminants">
-                    {{subDeterminant.description}} - {{subDeterminant.condition}}
-                  </li>-->
-                </ul>
+              <div *ngIf="rateRanges.length > 0">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Nombre</th>
+                      <th>L. Superior</th>
+                      <th>L. Inferior</th>
+                      <th>C. Fija</th>
+                      <th>C. Variable</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let rateRange of rateRanges">
+                      <td>{{rateRange.description}}</td>
+                      <td>{{rateRange.upper}}</td>
+                      <td>{{rateRange.lower}}</td>
+                      <td>{{rateRange.fixed}}</td>
+                      <td>{{rateRange.variable}}</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

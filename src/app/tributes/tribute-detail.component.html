@@ -1,4 +1,5 @@
-<h3> {{selectedTribute?.name}} - {{selectedTribute?.originLaw}} </h3>
+<h3> {{selectedTribute?.name}} - {{selectedTribute?.origin_law}} </h3>
+<hr />
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Declaración y Pagos</h3>
@@ -6,17 +7,17 @@
   <div class="panel-body">
     <dl class="dl-horizontal">
       <dt>Periodicidad declaración</dt>
-      <dd>{{selectedTribute?.declarationPaymentMode.declarationPeriodicity}}</dd>
+      <dd>{{selectedTribute?.declaration_payment_mode.declaration_periodicity}}</dd>
       <dt>Primer día para declarar</dt>
-      <dd>{{selectedTribute?.declarationPaymentMode.declarationSince}}</dd>
+      <dd>{{selectedTribute?.declaration_payment_mode.declaration_since}}</dd>
       <dt>Último día para declarar</dt>
-      <dd>{{selectedTribute?.declarationPaymentMode.declarationUntil}}</dd>
+      <dd>{{selectedTribute?.declaration_payment_mode.declaration_until}}</dd>
       <dt>Periodicidad pago</dt>
-      <dd>{{selectedTribute?.declarationPaymentMode.paymentPeriodicity}}</dd>
+      <dd>{{selectedTribute?.declaration_payment_mode.payment_periodicity}}</dd>
       <dt>Primer día para pagar</dt>
-      <dd>{{selectedTribute?.declarationPaymentMode.paymentSince}}</dd>
+      <dd>{{selectedTribute?.declaration_payment_mode.payment_since}}</dd>
       <dt>Último día para pagar</dt>
-      <dd>{{selectedTribute?.declarationPaymentMode.paymentUntil}}</dd>
+      <dd>{{selectedTribute?.declaration_payment_mode.payment_until}}</dd>
     </dl>
   </div>
 </div>
@@ -27,19 +28,19 @@
   <div class="panel-body">
     <dl class="dl-horizontal">
       <dt>Nombre</dt>
-      <dd>{{selectedTribute?.taxableIncome.name}}</dd>
+      <dd>{{selectedTribute?.taxable_income.name}}</dd>
       <dt>Descripción</dt>
-      <dd>{{selectedTribute?.taxableIncome.description}}</dd>
+      <dd>{{selectedTribute?.taxable_income.description}}</dd>
       <dt>Tokens</dt>
       <dd>
         <ul>
-          <li *ngFor="let token of selectedTribute?.taxableIncome.tokens">
+          <li *ngFor="let token of selectedTribute?.taxable_income.tokens">
            <b>{{token.name}}</b>
           </li>
         </ul>
       </dd>
       <dt>Formula</dt>
-      <dd>{{selectedTribute?.taxableIncome.formula}}</dd>
+      <dd>{{selectedTribute?.taxable_income.formula}}</dd>
     </dl>
   </div>
 </div>
