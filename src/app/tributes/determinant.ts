@@ -1,4 +1,5 @@
 export interface Determinant {
-    description: string;
+    name: string;
     condition: string;
+    value: number;
 }

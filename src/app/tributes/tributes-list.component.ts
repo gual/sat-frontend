@@ -11,10 +11,14 @@ export class TributesListComponent implements OnInit {
   tributes: Tribute[] = []
 
   constructor(private _tributesService: TributesService) {
-    this.tributes = _tributesService.getAll();
+    // this.tributes = _tributesService.getAll();
   }
 
   ngOnInit() {
+    this._tributesService.getAll()
+    .subscribe(
+      (data) => console.log(data)
+    );
   }
 
 }
