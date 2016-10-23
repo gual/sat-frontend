@@ -9,13 +9,21 @@ import { EstablishmentService } from '../../shared/EstablishmentService';
   styles: []
 })
 export class EstablishmentListComponent implements OnInit {
-  establishments: Establishment[] = [];
+  establishments: any[] = [];
 
-  constructor(private establishmentService: EstablishmentService) {
-    this.establishments = this.establishmentService.getAll();
-  }
+  constructor(private establishmentService: EstablishmentService) {  }
 
   ngOnInit() {
+    this.establishmentService.getAll()
+    .subscribe(
+      data => {
+        console.log(data);
+        for (let key in data){
+          data[key].id = key
+          this.establishments.push(data[key]);
+        }
+      }
+    );
   }
 
 }

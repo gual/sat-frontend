@@ -24,8 +24,6 @@ export class TributesService{
   constructor(private http: Http) { }
 
   getAll() {
-    const headers = new Headers()
-
     return this.http.get('https://mutis-prototype.firebaseio.com/tributes.json').map(
       (response: Response) => response.json()
     );

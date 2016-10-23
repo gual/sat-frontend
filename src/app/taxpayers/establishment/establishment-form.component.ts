@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Response } from '@angular/http';
 
 import { EstablishmentService } from '../../shared/EstablishmentService';
 
@@ -10,15 +11,40 @@ import { EstablishmentService } from '../../shared/EstablishmentService';
   styles: []
 })
 export class EstablishmentFormComponent implements OnInit {
+  establishmentForm: FormGroup;
 
-  constructor(private establishmentService: EstablishmentService, private router: Router) {
+  constructor(
+    private establishmentService: EstablishmentService,
+    private router: Router,
+    private formBuilder: FormBuilder) {
+
+    this.establishmentForm = formBuilder.group({
+      'code': [],
+      'type': [],
+      'designation': [],
+      'abbreviation': [],
+      'name': [],
+      'activity': [],
+      'province': [],
+      'city': [],
+      'registrationDate': [],
+      'assets': [],
+      'nit': [],
+      'nrc': [],
+      'startDate': [],
+      'ownType': [],
+      'ownName': [],
+      'ownNit': []
+    });
   }
 
   ngOnInit() {
   }
 
-  addEstablishment(form: NgForm) {
-    this.establishmentService.addFromForm(form);
+  addEstablishment() {
+    this.establishmentService.add(this.establishmentForm.value).subscribe(
+      (resp: Response) => console.log(resp.json())
+    );
     this.router.navigate(['/taxpayers/establishments']);
   }
 

@@ -1,5 +1,5 @@
 <h2>Nuevo Establecimiento</h2>
-<form class="panel form-horizontal" (ngSubmit)="addEstablishment(f)" #f="ngForm">
+<form [formGroup]="establishmentForm" class="panel form-horizontal" (ngSubmit)="addEstablishment()">
   <div class="panel panel-primary">
     <div class="panel-heading">
       <a data-toggle="collapse" href="#generalPanel">
@@ -10,13 +10,13 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="code">Código </label>
         <div class="col-md-4">
-          <input class="form-control" type="text" name="code" ngModel required>
+          <input class="form-control" type="text" name="code" formControlName="code">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="type">Tipo</label>
         <div class="col-md-6">
-          <select id="type" name="type" class="form-control">
+          <select id="type" name="type" class="form-control" formControlName="type">
             <option value="sacv">Sociedad Anónima de Capital Variable</option>
             <option value="coop">Cooperativa</option>
           </select>
@@ -25,67 +25,67 @@
       <div class="form-group">
         <label class="col-md-4 control-label" for="designation">Designación</label>
         <div class="col-md-6">
-          <input id="designation" name="designation" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="designation" name="designation" placeholder="" class="form-control input-md" type="text" formControlName="designation">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="abbreviation">Abreviatura</label>
         <div class="col-md-4">
-          <input id="abbreviation" name="abbreviation" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="abbreviation" name="abbreviation" placeholder="" class="form-control input-md" type="text" formControlName="abbreviation">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="name">Nombre compañía</label>
         <div class="col-md-6">
-          <input id="name" name="name" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="name" name="name" placeholder="" class="form-control input-md" type="text" formControlName="name">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="activity">Actividad</label>
         <div class="col-md-4">
-          <input id="activity" name="activity" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="activity" name="activity" placeholder="" class="form-control input-md" type="text" formControlName="activity">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="province">Provincia</label>
         <div class="col-md-4">
-          <input id="province" name="province" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="province" name="province" placeholder="" class="form-control input-md" type="text" formControlName="province">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="city">Ciudad</label>
         <div class="col-md-5">
-          <input id="city" name="city" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="city" name="city" placeholder="" class="form-control input-md" type="text" formControlName="city">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="registrationDate">Fecha Registro</label>
         <div class="col-md-4">
-          <input id="registrationDate" name="registrationDate" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="registrationDate" name="registrationDate" placeholder="" class="form-control input-md" type="text" formControlName="registrationDate">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="assets">Activo</label>
         <div class="col-md-4">
-          <input id="assets" name="assets" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="assets" name="assets" placeholder="" class="form-control input-md" type="text" formControlName="assets">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="nit">NIT</label>
         <div class="col-md-4">
-          <input id="nit" name="nit" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="nit" name="nit" placeholder="" class="form-control input-md" type="text" formControlName="nit">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="nrc">NRC</label>
         <div class="col-md-4">
-          <input id="nrc" name="nrc" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="nrc" name="nrc" placeholder="" class="form-control input-md" type="text" formControlName="nrc">
         </div>
       </div>
       <div class="form-group">
         <label class="col-md-4 control-label" for="startDate">Fecha Inicio</label>
         <div class="col-md-4">
-          <input id="startDate" name="startDate" placeholder="" class="form-control input-md" required="" type="text">
+          <input id="startDate" name="startDate" placeholder="" class="form-control input-md" type="text" formControlName="startDate">
         </div>
       </div>
     </div>
@@ -100,24 +100,24 @@
     </div>
     <div id="ownerPanel" class="panel-body panel-collapse collapse">
       <div class="form-group">
-        <label class="col-md-4 control-label" for="constructionQa">Tipo</label>
+        <label class="col-md-4 control-label" for="ownType">Tipo</label>
         <div class="col-md-2">
-          <select id="constructionQa" name="constructionQa" class="form-control">
+          <select id="ownType" name="ownType" class="form-control" formControlName="ownType">
             <option value="company">Compañía</option>
             <option value="naturalPerson">Persona Natural</option>
           </select>
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="own_name">Nombre/Razón Social </label>
+        <label class="col-md-4 control-label" for="ownName">Nombre/Razón Social </label>
         <div class="col-md-4">
-          <input class="form-control input-md" type="text" name="own_name" ngModel required>
+          <input class="form-control input-md" type="text" name="ownName" formControlName="ownName">
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="own_nit">NIT </label>
+        <label class="col-md-4 control-label" for="ownNit">NIT </label>
         <div class="col-md-4">
-          <input class="form-control input-md" type="text" name="own_nit" ngModel required>
+          <input class="form-control input-md" type="text" name="ownNit" formControlName="ownNit">
         </div>
       </div>
     </div>
