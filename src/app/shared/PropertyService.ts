@@ -1,4 +1,6 @@
-import { NgForm } from '@angular/forms';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers } from '@angular/http';
+import 'rxjs/Rx';
 
 import { Property } from '../taxpayers/property';
 import { Owner } from '../taxpayers/owner';
@@ -6,22 +8,21 @@ import { Company } from '../taxpayers/company';
 
 let properties: Property[] = [];
 
-
+@Injectable()
 export class PropertyService{
-  getAll() : Property[] {
-    return properties;
+  constructor (private http: Http) { }
+
+  getAll() {
+    return this.http.get('https://mutis-prototype.firebaseio.com/properties.json').map(
+      (response: Response) => response.json()
+    );
   }
 
-  add(property: Property) {
-      properties.push(property);
-      console.log(properties);
-  }
+  add(property: any) {
+    const body = JSON.stringify(property);
+    const headers = new Headers();
+    headers.append('Content-type', 'application/json');
 
-  addFromForm(form: NgForm) {
-    let owner: Company = {nit: form.value.own_nit, socialReason: form.value.own_name};
-
-    let property: Property = {code: form.value.code, address: form.value.address, owner}
-
-    this.add(property);
+    return this.http.post('https://mutis-prototype.firebaseio.com/properties.json', body, {headers: headers})
   }
 }

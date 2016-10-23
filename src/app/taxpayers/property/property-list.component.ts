@@ -9,13 +9,21 @@ import { PropertyService } from '../../shared/PropertyService';
   styles: []
 })
 export class PropertyListComponent implements OnInit {
-  properties: Property[] = [];
+  properties: any[] = [];
 
-  constructor(private propertyService: PropertyService) {
-    this.properties = this.propertyService.getAll();
-  }
+  constructor(private propertyService: PropertyService) { }
 
   ngOnInit() {
+    this.propertyService.getAll()
+    .subscribe(
+      data => {
+        console.log(data);
+        for (let key in data){
+          data[key].id = key
+          this.properties.push(data[key]);
+        }
+      }
+    );
   }
 
 }

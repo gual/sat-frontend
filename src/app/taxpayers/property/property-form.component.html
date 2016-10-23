@@ -1,5 +1,5 @@
 <h2>Nuevo Inmueble</h2>
-<form class="panel form-horizontal" (ngSubmit)="addProperty(f)" #f="ngForm">
+<form class="panel form-horizontal" (ngSubmit)="addProperty()" [formGroup]="propertyForm">
   <fieldset>
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -11,53 +11,53 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="code">Código </label>
           <div class="col-md-4">
-            <input class="form-control" type="text" name="code" ngModel required>
+            <input class="form-control" type="text" name="code" required formControlName="code">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="address">Dirección</label>
           <div class="col-md-6">
-            <textarea class="form-control" id="address" name="address"></textarea>
+            <textarea class="form-control" id="address" name="address" formControlName="address"></textarea>
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="coordinateX">Coordenada X</label>
           <div class="col-md-2">
-            <input id="coordinateX" name="coordinateX" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="coordinateX" name="coordinateX" placeholder="" class="form-control input-md" required="" type="text" formControlName="coordinateX">
           </div>
           <label class="col-md-2 control-label" for="coordinateY">Coordenada Y</label>
           <div class="col-md-2">
-            <input id="coordinateY" name="coordinateY" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="coordinateY" name="coordinateY" placeholder="" class="form-control input-md" required="" type="text" formControlName="coordinateY">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="zone">Zona</label>
           <div class="col-md-2">
-            <input id="zone" name="zone" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="zone" name="zone" placeholder="" class="form-control input-md" required="" type="text" formControlName="zone">
           </div>
           <label class="col-md-2 control-label" for="sector">Sector</label>
           <div class="col-md-2">
-            <input id="sector" name="sector" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="sector" name="sector" placeholder="" class="form-control input-md" required="" type="text" formControlName="sector">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="block">Block</label>
           <div class="col-md-2">
-            <input id="block" name="block" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="block" name="block" placeholder="" class="form-control input-md" required="" type="text" formControlName="block">
           </div>
           <label class="col-md-2 control-label" for="lot">Lote</label>
           <div class="col-md-2">
-            <input id="lot" name="lot" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="lot" name="lot" placeholder="" class="form-control input-md" required="" type="text" formControlName="lot">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="cnrSector">Sector (CNR)</label>
           <div class="col-md-2">
-            <input id="cnrSector" name="cnrSector" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="cnrSector" name="cnrSector" placeholder="" class="form-control input-md" required="" type="text" formControlName="cnrSector">
           </div>
           <label class="col-md-2 control-label" for="cnrPlot">Plot (CNR)</label>
           <div class="col-md-2">
-            <input id="cnrPlot" name="cnrPlot" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="cnrPlot" name="cnrPlot" placeholder="" class="form-control input-md" required="" type="text" formControlName="cnrPlot">
           </div>
         </div>
 
@@ -67,14 +67,14 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="nature">Naturaleza</label>
           <div class="col-md-2">
-            <select id="nature" name="nature" class="form-control">
+            <select id="nature" name="nature" class="form-control" formControlName="nature">
               <option value="urban">Urbana</option>
               <option value="rural">Rural</option>
             </select>
           </div>
           <label class="col-md-2 control-label" for="type">Tipo</label>
           <div class="col-md-2">
-            <select id="type" name="type" class="form-control">
+            <select id="type" name="type" class="form-control" formControlName="type">
               <option value="empty">Baldío</option>
               <option value="comm">comercio</option>
               <option value="condo">Condominio</option>
@@ -87,7 +87,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="lighting">Alumbrado</label>
           <div class="col-md-2">
-            <select id="lighting" name="lighting" class="form-control">
+            <select id="lighting" name="lighting" class="form-control" formControlName="lighting">
               <option value="a">A</option>
               <option value="b">B</option>
               <option value="c">C</option>
@@ -96,7 +96,7 @@
           </div>
           <label class="col-md-2 control-label" for="electricityCompany">Compañia electrica</label>
           <div class="col-md-2">
-            <select id="electricityCompany" name="electricityCompany" class="form-control">
+            <select id="electricityCompany" name="electricityCompany" class="form-control" formControlName="electricityCompany">
               <option value="clesa">AES-CLESA</option>
             </select>
           </div>
@@ -104,7 +104,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="nic">NIC / NIS</label>
           <div class="col-md-4">
-            <input id="nic" name="nic" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="nic" name="nic" placeholder="" class="form-control input-md" required="" type="text" formControlName="nic">
           </div>
         </div>
 
@@ -114,21 +114,21 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="totalArea">Área total</label>
           <div class="col-md-2">
-            <input id="totalArea" name="totalArea" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="totalArea" name="totalArea" placeholder="" class="form-control input-md" required="" type="text" formControlName="totalArea">
           </div>
           <label class="col-md-2 control-label" for="constructedArea">Área construida</label>
           <div class="col-md-2">
-            <input id="constructedArea" name="constructedArea" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="constructedArea" name="constructedArea" placeholder="" class="form-control input-md" required="" type="text" formControlName="constructedArea">
           </div>
         </div>
         <div class="form-group">
           <label class="col-md-4 control-label" for="floors">Pisos</label>
           <div class="col-md-2">
-            <input id="floors" name="floors" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="floors" name="floors" placeholder="" class="form-control input-md" required="" type="text" formControlName="floors">
           </div>
           <label class="col-md-2 control-label" for="course">Rumbo</label>
           <div class="col-md-2">
-            <select id="course" name="course" class="form-control">
+            <select id="course" name="course" class="form-control" formControlName="course">
               <option value="n">Norte</option>
               <option value="w">Oeste</option>
               <option value="s">Sur</option>
@@ -139,11 +139,11 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="linearMeters">Metros lineales</label>
           <div class="col-md-2">
-            <input id="linearMeters" name="linearMeters" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="linearMeters" name="linearMeters" placeholder="" class="form-control input-md" required="" type="text" formControlName="linearMeters">
           </div>
           <label class="col-md-2 control-label" for="location">Rodaje</label>
           <div class="col-md-2">
-            <input id="location" name="location" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="location" name="location" placeholder="" class="form-control input-md" required="" type="text" formControlName="location">
           </div>
         </div>
 
@@ -153,7 +153,7 @@
         <div class="form-group">
           <label class="col-md-4 control-label" for="constructionQa">Calidad de construcción</label>
           <div class="col-md-2">
-            <select id="constructionQa" name="constructionQa" class="form-control">
+            <select id="constructionQa" name="constructionQa" class="form-control" formControlName="constructionQa">
               <option value="1">Nivel 1</option>
               <option value="2">Nivel 2</option>
               <option value="3">Nivel 3</option>
@@ -161,7 +161,7 @@
           </div>
           <label class="col-md-2 control-label" for="avgRent">Renta promedio mensual</label>
           <div class="col-md-2">
-            <input id="avgRent" name="avgRent" placeholder="" class="form-control input-md" required="" type="text">
+            <input id="avgRent" name="avgRent" placeholder="" class="form-control input-md" required="" type="text" formControlName="avgRent">
           </div>
         </div>
       </div>
@@ -176,24 +176,24 @@
       </div>
       <div id="ownerPanel" class="panel-body panel-collapse collapse">
         <div class="form-group">
-          <label class="col-md-4 control-label" for="constructionQa">Tipo</label>
+          <label class="col-md-4 control-label" for="ownType">Tipo</label>
           <div class="col-md-2">
-            <select id="constructionQa" name="constructionQa" class="form-control">
+            <select id="ownType" name="ownType" class="form-control" formControlName="ownType">
               <option value="company">Compañía</option>
               <option value="naturalPerson">Persona Natural</option>
             </select>
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="own_name">Nombre/Razón Social </label>
+          <label class="col-md-4 control-label" for="ownName">Nombre/Razón Social </label>
           <div class="col-md-4">
-            <input class="form-control input-md" type="text" name="own_name" ngModel required>
+            <input class="form-control input-md" type="text" name="ownName" required formControlName="ownName">
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="own_nit">NIT </label>
+          <label class="col-md-4 control-label" for="ownNit">NIT </label>
           <div class="col-md-4">
-            <input class="form-control input-md" type="text" name="own_nit" ngModel required>
+            <input class="form-control input-md" type="text" name="ownNit" required formControlName="ownNit">
           </div>
         </div>
       </div>
