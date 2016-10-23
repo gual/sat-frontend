@@ -1,47 +1,205 @@
 <h2>Nuevo Inmueble</h2>
-<form class="panel" (ngSubmit)="addProperty(f)" #f="ngForm">
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">General</h3>
+<form class="panel form-horizontal" (ngSubmit)="addProperty(f)" #f="ngForm">
+  <fieldset>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <a data-toggle="collapse" href="#generalPanel">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> General</h3>
+        </a>
+      </div>
+      <div id="generalPanel" class="panel-body panel-collapse collapse in">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="code">Código </label>
+          <div class="col-md-4">
+            <input class="form-control" type="text" name="code" ngModel required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="address">Dirección</label>
+          <div class="col-md-6">
+            <textarea class="form-control" id="address" name="address"></textarea>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="coordinateX">Coordenada X</label>
+          <div class="col-md-2">
+            <input id="coordinateX" name="coordinateX" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+          <label class="col-md-2 control-label" for="coordinateY">Coordenada Y</label>
+          <div class="col-md-2">
+            <input id="coordinateY" name="coordinateY" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="zone">Zona</label>
+          <div class="col-md-2">
+            <input id="zone" name="zone" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+          <label class="col-md-2 control-label" for="sector">Sector</label>
+          <div class="col-md-2">
+            <input id="sector" name="sector" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="block">Block</label>
+          <div class="col-md-2">
+            <input id="block" name="block" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+          <label class="col-md-2 control-label" for="lot">Lote</label>
+          <div class="col-md-2">
+            <input id="lot" name="lot" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="cnrSector">Sector (CNR)</label>
+          <div class="col-md-2">
+            <input id="cnrSector" name="cnrSector" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+          <label class="col-md-2 control-label" for="cnrPlot">Plot (CNR)</label>
+          <div class="col-md-2">
+            <input id="cnrPlot" name="cnrPlot" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+
+
+        <hr>
+        <legend>Clasificación</legend>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="nature">Naturaleza</label>
+          <div class="col-md-2">
+            <select id="nature" name="nature" class="form-control">
+              <option value="urban">Urbana</option>
+              <option value="rural">Rural</option>
+            </select>
+          </div>
+          <label class="col-md-2 control-label" for="type">Tipo</label>
+          <div class="col-md-2">
+            <select id="type" name="type" class="form-control">
+              <option value="empty">Baldío</option>
+              <option value="comm">comercio</option>
+              <option value="condo">Condominio</option>
+              <option value="habit">Habitacional</option>
+              <option value="indu">Industria</option>
+              <option value="serv">Servicio</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="lighting">Alumbrado</label>
+          <div class="col-md-2">
+            <select id="lighting" name="lighting" class="form-control">
+              <option value="a">A</option>
+              <option value="b">B</option>
+              <option value="c">C</option>
+              <option value="d">D</option>
+            </select>
+          </div>
+          <label class="col-md-2 control-label" for="electricityCompany">Compañia electrica</label>
+          <div class="col-md-2">
+            <select id="electricityCompany" name="electricityCompany" class="form-control">
+              <option value="clesa">AES-CLESA</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="nic">NIC / NIS</label>
+          <div class="col-md-4">
+            <input id="nic" name="nic" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+
+
+        <hr>
+        <legend>Dimensiones</legend>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="totalArea">Área total</label>
+          <div class="col-md-2">
+            <input id="totalArea" name="totalArea" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+          <label class="col-md-2 control-label" for="constructedArea">Área construida</label>
+          <div class="col-md-2">
+            <input id="constructedArea" name="constructedArea" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="floors">Pisos</label>
+          <div class="col-md-2">
+            <input id="floors" name="floors" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+          <label class="col-md-2 control-label" for="course">Rumbo</label>
+          <div class="col-md-2">
+            <select id="course" name="course" class="form-control">
+              <option value="n">Norte</option>
+              <option value="w">Oeste</option>
+              <option value="s">Sur</option>
+              <option value="e">Este</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="linearMeters">Metros lineales</label>
+          <div class="col-md-2">
+            <input id="linearMeters" name="linearMeters" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+          <label class="col-md-2 control-label" for="location">Rodaje</label>
+          <div class="col-md-2">
+            <input id="location" name="location" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+
+
+        <hr>
+        <legend>Indicadores</legend>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="constructionQa">Calidad de construcción</label>
+          <div class="col-md-2">
+            <select id="constructionQa" name="constructionQa" class="form-control">
+              <option value="1">Nivel 1</option>
+              <option value="2">Nivel 2</option>
+              <option value="3">Nivel 3</option>
+            </select>
+          </div>
+          <label class="col-md-2 control-label" for="avgRent">Renta promedio mensual</label>
+          <div class="col-md-2">
+            <input id="avgRent" name="avgRent" placeholder="" class="form-control input-md" required="" type="text">
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <label for="code">Código </label>
-        <input class="form-control" type="text" name="code" ngModel required>
+
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <a data-toggle="collapse" href="#ownerPanel">
+          <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Propietario</h3>
+        </a>
       </div>
-      <div class="form-group">
-        <label for="address">Dirección </label>
-        <input class="form-control" type="text" name="address" ngModel required>
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Propietario</h3>
-    </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <h5> Tipo </h5>
-        <label class="radio-inline">
-          <input type="radio" name="own_type" id="own_type_company" value="company">
-          Compañia
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="own_type" id="own_type_natural" value="naturalPerson">
-          Persona Natural
-        </label>
-      </div>
-      <div class="form-group">
-        <label for="own_name">Nombre/Razón Social </label>
-        <input class="form-control" type="text" name="own_name" ngModel required>
-      </div>
-      <div class="form-group">
-        <label for="own_nit">NIT </label>
-        <input class="form-control" type="text" name="own_nit" ngModel required>
+      <div id="ownerPanel" class="panel-body panel-collapse collapse">
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="constructionQa">Tipo</label>
+          <div class="col-md-2">
+            <select id="constructionQa" name="constructionQa" class="form-control">
+              <option value="company">Compañía</option>
+              <option value="naturalPerson">Persona Natural</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="own_name">Nombre/Razón Social </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="own_name" ngModel required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="own_nit">NIT </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="own_nit" ngModel required>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-  <button type="submit" class="btn btn-primary">Guardar</button>
-  <button type="reset" class="btn btn-success">Limpiar</button>
-  <a [routerLink]="['/taxpayers/properties']" class="btn btn-info">Regresar</a>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button type="reset" class="btn btn-success">Limpiar</button>
+    <a [routerLink]="['/taxpayers/properties']" class="btn btn-info">Regresar</a>
+  </fieldset>
 </form>
