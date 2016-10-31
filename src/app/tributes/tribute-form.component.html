@@ -25,8 +25,8 @@
         <div class="form-group">
           <label for="subject">Sujeto al que aplica </label>
           <select name="subject" class="form-control" ngModel required>
-            <option value="Establecimientos">Establecimientos</option>
-            <option value="Inmuebles">Inmuebles</option>
+            <option value="E">Establecimientos</option>
+            <option value="P">Inmuebles</option>
           </select>
         </div>
 
@@ -91,10 +91,10 @@
       <div class="panel-body">
         <div class="form-group">
           <label for="dec_periodicity">Periodicidad declaración </label>
-          <select name="dec_periodicity" class="form-control">
-            <option value="Mensual">Mensual</option>
-            <option value="Trimestral">Trimestral</option>
-            <option value="Anual">Anual</option>
+          <select name="dec_periodicity" class="form-control" ngModel>
+            <option value="1">Mensual</option>
+            <option value="3">Trimestral</option>
+            <option value="12">Anual</option>
           </select>
         </div>
         <div class="form-group">
@@ -107,10 +107,10 @@
         </div>
         <div class="form-group">
           <label for="pay_periodicity">Periodicidad pago </label>
-          <select name="pay_periodicity" class="form-control">
-            <option value="Mensual">Mensual</option>
-            <option value="Trimestral">Trimestral</option>
-            <option value="Anual">Anual</option>
+          <select name="pay_periodicity" class="form-control" ngModel>
+            <option value="1">Mensual</option>
+            <option value="3">Trimestral</option>
+            <option value="12">Anual</option>
           </select>
         </div>
         <div class="form-group">

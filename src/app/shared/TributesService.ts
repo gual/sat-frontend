@@ -18,13 +18,16 @@ let rateRanges: Token[] = [];
 let rateDeterminants: any[] = [];
 let subjectDeterminants: any[] = [];
 
+let backendURL = "http://localhost:8000/";
+// let backendURL = "http://88.99.15.137/";
+
 @Injectable()
 export class TributesService{
 
   constructor(private http: Http) { }
 
   getAll() {
-    return this.http.get('https://mutis-prototype.firebaseio.com/tributes.json').map(
+    return this.http.get(backendURL + 'taxes/').map(
       (response: Response) => response.json()
     );
   }
@@ -60,7 +63,7 @@ export class TributesService{
     const headers = new Headers();
     headers.append('Content-type', 'application/json');
 
-    return this.http.post('https://mutis-prototype.firebaseio.com/tributes.json', body, {headers: headers})
+    return this.http.post(backendURL + 'taxes/', body, {headers: headers})
   }
 
   addToken(token: Token) {
@@ -98,7 +101,8 @@ export class TributesService{
       rate: {
         tokens: rateTokens,
         formula: form.value.rate_formula,
-        determinants: rateDeterminants
+        determinants: rateDeterminants,
+        ranges: rateRanges
       },
       declaration_payment_mode: {
         declaration_periodicity: form.value.dec_periodicity,
@@ -110,19 +114,6 @@ export class TributesService{
       },
       determinants: subjectDeterminants
     }
-  //   let taxableIncome: TaxableIncome =
-  //     {name: form.value.ti_name, description: form.value.ti_description, formula: form.value.ti_formula, tokens: tokens}
-
-  //   let calculation: Calculation =
-  //     {fixedFee: form.value.c_fixed_fee, variableFee: form.value.c_variable_fee, formula: form.value.c_formula, validUntil: form.value.c_valid_until}
-
-  //   let decPayMode: DeclarationPaymentMode =
-  //     { declarationPeriodicity: form.value.dec_periodicity, declarationSince: form.value.dec_since, declarationUntil: form.value.dec_until,
-  //       paymentPeriodicity: form.value.payPeriodicity, paymentSince: form.value.pay_since, paymentUntil: form.value.pay_until}
-
-  //   let tribute: Tribute =
-  //     { id: tributes.length, name: form.value.name, originLaw: form.value.law, taxableIncome: taxableIncome,
-  //       calculation: calculation, declarationPaymentMode: decPayMode, determinants: determinants }
 
     this.add(tribute).subscribe(
       (resp: Response) => console.log(resp.json())
