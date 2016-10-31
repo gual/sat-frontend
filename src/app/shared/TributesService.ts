@@ -18,8 +18,8 @@ let rateRanges: Token[] = [];
 let rateDeterminants: any[] = [];
 let subjectDeterminants: any[] = [];
 
-let backendURL = "http://localhost:8000/";
-// let backendURL = "http://88.99.15.137/";
+// let backendURL = "http://localhost:8000/";
+let backendURL = "http://88.99.15.137/";
 
 @Injectable()
 export class TributesService{
