@@ -21,13 +21,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="coordinateX">Coordenada X</label>
+          <label class="col-md-4 control-label" for="coordinate_x">Coordenada X</label>
           <div class="col-md-2">
-            <input id="coordinateX" name="coordinateX" placeholder="" class="form-control input-md" required="" type="text" formControlName="coordinateX">
+            <input id="coordinate_x" name="coordinate_x" placeholder="" class="form-control input-md" required="" type="text" formControlName="coordinate_x">
           </div>
-          <label class="col-md-2 control-label" for="coordinateY">Coordenada Y</label>
+          <label class="col-md-2 control-label" for="coordinate_y">Coordenada Y</label>
           <div class="col-md-2">
-            <input id="coordinateY" name="coordinateY" placeholder="" class="form-control input-md" required="" type="text" formControlName="coordinateY">
+            <input id="coordinate_y" name="coordinate_y" placeholder="" class="form-control input-md" required="" type="text" formControlName="coordinate_y">
           </div>
         </div>
         <div class="form-group">
@@ -51,13 +51,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="cnrSector">Sector (CNR)</label>
+          <label class="col-md-4 control-label" for="cnr_sector">Sector (CNR)</label>
           <div class="col-md-2">
-            <input id="cnrSector" name="cnrSector" placeholder="" class="form-control input-md" required="" type="text" formControlName="cnrSector">
+            <input id="cnr_sector" name="cnr_sector" placeholder="" class="form-control input-md" required="" type="text" formControlName="cnr_sector">
           </div>
-          <label class="col-md-2 control-label" for="cnrPlot">Plot (CNR)</label>
+          <label class="col-md-2 control-label" for="cnr_plot">Plot (CNR)</label>
           <div class="col-md-2">
-            <input id="cnrPlot" name="cnrPlot" placeholder="" class="form-control input-md" required="" type="text" formControlName="cnrPlot">
+            <input id="cnr_plot" name="cnr_plot" placeholder="" class="form-control input-md" required="" type="text" formControlName="cnr_plot">
           </div>
         </div>
 
@@ -94,9 +94,9 @@
               <option value="d">D</option>
             </select>
           </div>
-          <label class="col-md-2 control-label" for="electricityCompany">Compañia electrica</label>
+          <label class="col-md-2 control-label" for="electricity_company">Compañia electrica</label>
           <div class="col-md-2">
-            <select id="electricityCompany" name="electricityCompany" class="form-control" formControlName="electricityCompany">
+            <select id="electricity_company" name="electricity_company" class="form-control" formControlName="electricity_company">
               <option value="clesa">AES-CLESA</option>
             </select>
           </div>
@@ -112,13 +112,13 @@
         <hr>
         <legend>Dimensiones</legend>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="totalArea">Área total</label>
+          <label class="col-md-4 control-label" for="total_area">Área total</label>
           <div class="col-md-2">
-            <input id="totalArea" name="totalArea" placeholder="" class="form-control input-md" required="" type="text" formControlName="totalArea">
+            <input id="total_area" name="total_area" placeholder="" class="form-control input-md" required="" type="text" formControlName="total_area">
           </div>
-          <label class="col-md-2 control-label" for="constructedArea">Área construida</label>
+          <label class="col-md-2 control-label" for="constructed_area">Área construida</label>
           <div class="col-md-2">
-            <input id="constructedArea" name="constructedArea" placeholder="" class="form-control input-md" required="" type="text" formControlName="constructedArea">
+            <input id="constructed_area" name="constructed_area" placeholder="" class="form-control input-md" required="" type="text" formControlName="constructed_area">
           </div>
         </div>
         <div class="form-group">
@@ -137,9 +137,9 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="linearMeters">Metros lineales</label>
+          <label class="col-md-4 control-label" for="linear_meters">Metros lineales</label>
           <div class="col-md-2">
-            <input id="linearMeters" name="linearMeters" placeholder="" class="form-control input-md" required="" type="text" formControlName="linearMeters">
+            <input id="linear_meters" name="linear_meters" placeholder="" class="form-control input-md" required="" type="text" formControlName="linear_meters">
           </div>
           <label class="col-md-2 control-label" for="location">Rodaje</label>
           <div class="col-md-2">
@@ -151,53 +151,90 @@
         <hr>
         <legend>Indicadores</legend>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="constructionQa">Calidad de construcción</label>
+          <label class="col-md-4 control-label" for="construction_qa">Calidad de construcción</label>
           <div class="col-md-2">
-            <select id="constructionQa" name="constructionQa" class="form-control" formControlName="constructionQa">
+            <select id="construction_qa" name="construction_qa" class="form-control" formControlName="construction_qa">
               <option value="1">Nivel 1</option>
               <option value="2">Nivel 2</option>
               <option value="3">Nivel 3</option>
             </select>
           </div>
-          <label class="col-md-2 control-label" for="avgRent">Renta promedio mensual</label>
+          <label class="col-md-2 control-label" for="avg_rent">Renta promedio mensual</label>
           <div class="col-md-2">
-            <input id="avgRent" name="avgRent" placeholder="" class="form-control input-md" required="" type="text" formControlName="avgRent">
+            <input id="avg_rent" name="avg_rent" placeholder="" class="form-control input-md" required="" type="text" formControlName="avg_rent">
           </div>
         </div>
       </div>
     </div>
 
 
-    <div class="panel panel-primary">
+    <div class="panel panel-primary" formGroupName="person">
       <div class="panel-heading">
         <a data-toggle="collapse" href="#ownerPanel">
           <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Propietario</h3>
         </a>
       </div>
       <div id="ownerPanel" class="panel-body panel-collapse collapse">
-        <div class="form-group">
+        <!--<div class="form-group">
           <label class="col-md-4 control-label" for="ownType">Tipo</label>
           <div class="col-md-2">
-            <select id="ownType" name="ownType" class="form-control" formControlName="ownType">
+            <select id="ownType" name="ownType" class="form-control" >
               <option value="company">Compañía</option>
               <option value="naturalPerson">Persona Natural</option>
             </select>
           </div>
-        </div>
+        </div>-->
         <div class="form-group">
-          <label class="col-md-4 control-label" for="ownName">Nombre/Razón Social </label>
+          <label class="col-md-4 control-label" for="code">Código </label>
           <div class="col-md-4">
-            <input class="form-control input-md" type="text" name="ownName" required formControlName="ownName">
+            <input class="form-control input-md" type="text" name="code" formControlName="code">
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="ownNit">NIT </label>
+          <label class="col-md-4 control-label" for="name">Nombre </label>
           <div class="col-md-4">
-            <input class="form-control input-md" type="text" name="ownNit" required formControlName="ownNit">
+            <input class="form-control input-md" type="text" name="name" formControlName="name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="other_names">Otros Nombres </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="other_names" formControlName="other_names">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="surname">Apellido </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="surname" formControlName="surname">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="other_surnames">Otros Apellidos </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="other_surnames" formControlName="other_surnames">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="dui">DUI </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="dui" formControlName="dui">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="nit">NIT </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="nit" formControlName="nit">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="birthdate">Fecha de nacimiento </label>
+          <div class="col-md-4">
+            <input class="form-control input-md" type="text" name="birthdate" formControlName="birthdate">
           </div>
         </div>
       </div>
     </div>
+
     <button type="submit" class="btn btn-primary">Guardar</button>
     <button type="reset" class="btn btn-success">Limpiar</button>
     <a [routerLink]="['/taxpayers/properties']" class="btn btn-info">Regresar</a>

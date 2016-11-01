@@ -6,14 +6,15 @@ import { Property } from '../taxpayers/property';
 import { Owner } from '../taxpayers/owner';
 import { Company } from '../taxpayers/company';
 
-let properties: Property[] = [];
+// let backendURL = "http://localhost:8000/";
+let backendURL = "http://88.99.15.137/";
 
 @Injectable()
 export class PropertyService{
   constructor (private http: Http) { }
 
   getAll() {
-    return this.http.get('https://mutis-prototype.firebaseio.com/properties.json').map(
+    return this.http.get(backendURL + 'properties/').map(
       (response: Response) => response.json()
     );
   }
@@ -23,6 +24,6 @@ export class PropertyService{
     const headers = new Headers();
     headers.append('Content-type', 'application/json');
 
-    return this.http.post('https://mutis-prototype.firebaseio.com/properties.json', body, {headers: headers})
+    return this.http.post(backendURL + 'properties/', body, {headers: headers})
   }
 }
