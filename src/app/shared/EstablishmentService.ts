@@ -6,13 +6,14 @@ import { Establishment } from '../taxpayers/establishment';
 import { Owner } from '../taxpayers/owner';
 import { Company } from '../taxpayers/company';
 
-let establishments: Establishment[] = [];
+// let backendURL = "http://localhost:8000/";
+let backendURL = "http://88.99.15.137/";
 
 @Injectable()
 export class EstablishmentService {
   constructor(private http: Http) { }
   getAll() {
-    return this.http.get('https://mutis-prototype.firebaseio.com/establishments.json').map(
+    return this.http.get(backendURL + 'establishments/').map(
       (response: Response) => response.json()
     );
   }
@@ -22,6 +23,6 @@ export class EstablishmentService {
     const headers = new Headers();
     headers.append('Content-type', 'application/json');
 
-    return this.http.post('https://mutis-prototype.firebaseio.com/establishments.json', body, {headers: headers})
+    return this.http.post(backendURL + 'establishments/', body, {headers: headers})
   }
 }

@@ -22,19 +22,27 @@ export class EstablishmentFormComponent implements OnInit {
       'code': [],
       'type': [],
       'designation': [],
+      'address': [],
       'abbreviation': [],
       'name': [],
       'activity': [],
       'province': [],
       'city': [],
-      'registrationDate': [],
+      'registration_date': [],
       'assets': [],
       'nit': [],
       'nrc': [],
-      'startDate': [],
-      'ownType': [],
-      'ownName': [],
-      'ownNit': []
+      'start_date': [],
+      'person': formBuilder.group({
+        'name': [],
+        'other_names': [],
+        'code': [],
+        'surname': [],
+        'other_surnames': [],
+        'dui': [],
+        'nit': [],
+        'birthdate': [],
+      })
     });
   }
 

@@ -23,6 +23,12 @@
         </div>
       </div>
       <div class="form-group">
+        <label class="col-md-4 control-label" for="address">Dirección </label>
+        <div class="col-md-4">
+          <input class="form-control" type="text" name="address" formControlName="address">
+        </div>
+      </div>
+      <div class="form-group">
         <label class="col-md-4 control-label" for="designation">Designación</label>
         <div class="col-md-6">
           <input id="designation" name="designation" placeholder="" class="form-control input-md" type="text" formControlName="designation">
@@ -59,9 +65,9 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="registrationDate">Fecha Registro</label>
+        <label class="col-md-4 control-label" for="registration_date">Fecha Registro</label>
         <div class="col-md-4">
-          <input id="registrationDate" name="registrationDate" placeholder="" class="form-control input-md" type="text" formControlName="registrationDate">
+          <input id="registration_date" name="registration_date" placeholder="" class="form-control input-md" type="text" formControlName="registration_date">
         </div>
       </div>
       <div class="form-group">
@@ -83,41 +89,77 @@
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="startDate">Fecha Inicio</label>
+        <label class="col-md-4 control-label" for="start_date">Fecha Inicio</label>
         <div class="col-md-4">
-          <input id="startDate" name="startDate" placeholder="" class="form-control input-md" type="text" formControlName="startDate">
+          <input name="start_date" placeholder="" class="form-control input-md" type="text" formControlName="start_date">
         </div>
       </div>
     </div>
   </div>
 
 
-  <div class="panel panel-primary">
+  <div class="panel panel-primary" formGroupName="person">
     <div class="panel-heading">
       <a data-toggle="collapse" href="#ownerPanel">
         <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Propietario</h3>
       </a>
     </div>
     <div id="ownerPanel" class="panel-body panel-collapse collapse">
-      <div class="form-group">
+      <!--<div class="form-group">
         <label class="col-md-4 control-label" for="ownType">Tipo</label>
         <div class="col-md-2">
-          <select id="ownType" name="ownType" class="form-control" formControlName="ownType">
+          <select id="ownType" name="ownType" class="form-control" >
             <option value="company">Compañía</option>
             <option value="naturalPerson">Persona Natural</option>
           </select>
         </div>
-      </div>
+      </div>-->
       <div class="form-group">
-        <label class="col-md-4 control-label" for="ownName">Nombre/Razón Social </label>
+        <label class="col-md-4 control-label" for="code">Código </label>
         <div class="col-md-4">
-          <input class="form-control input-md" type="text" name="ownName" formControlName="ownName">
+          <input class="form-control input-md" type="text" name="code" formControlName="code">
         </div>
       </div>
       <div class="form-group">
-        <label class="col-md-4 control-label" for="ownNit">NIT </label>
+        <label class="col-md-4 control-label" for="name">Nombre </label>
         <div class="col-md-4">
-          <input class="form-control input-md" type="text" name="ownNit" formControlName="ownNit">
+          <input class="form-control input-md" type="text" name="name" formControlName="name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="other_names">Otros Nombres </label>
+        <div class="col-md-4">
+          <input class="form-control input-md" type="text" name="other_names" formControlName="other_names">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="surname">Apellido </label>
+        <div class="col-md-4">
+          <input class="form-control input-md" type="text" name="surname" formControlName="surname">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="other_surnames">Otros Apellidos </label>
+        <div class="col-md-4">
+          <input class="form-control input-md" type="text" name="other_surnames" formControlName="other_surnames">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="dui">DUI </label>
+        <div class="col-md-4">
+          <input class="form-control input-md" type="text" name="dui" formControlName="dui">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="nit">NIT </label>
+        <div class="col-md-4">
+          <input class="form-control input-md" type="text" name="nit" formControlName="nit">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="birthdate">Fecha de nacimiento </label>
+        <div class="col-md-4">
+          <input class="form-control input-md" type="text" name="birthdate" formControlName="birthdate">
         </div>
       </div>
     </div>
