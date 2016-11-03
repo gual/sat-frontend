@@ -6,8 +6,7 @@ import { Establishment } from '../taxpayers/establishment';
 import { Owner } from '../taxpayers/owner';
 import { Company } from '../taxpayers/company';
 
-// let backendURL = "http://localhost:8000/";
-let backendURL = "//88.99.15.137/";
+let backendURL = "http://localhost:8000/";
 
 @Injectable()
 export class EstablishmentService {
@@ -22,6 +21,7 @@ export class EstablishmentService {
     const body = JSON.stringify(establishment);
     const headers = new Headers();
     headers.append('Content-type', 'application/json');
+    console.log(establishment);
 
     return this.http.post(backendURL + 'establishments/', body, {headers: headers})
   }

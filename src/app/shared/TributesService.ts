@@ -18,8 +18,7 @@ let rateRanges: Token[] = [];
 let rateDeterminants: any[] = [];
 let subjectDeterminants: any[] = [];
 
-// let backendURL = "http://localhost:8000/";
-let backendURL = "//88.99.15.137/";
+let backendURL = "http://localhost:8000/";
 
 @Injectable()
 export class TributesService{
@@ -62,6 +61,7 @@ export class TributesService{
     const body = JSON.stringify(tribute);
     const headers = new Headers();
     headers.append('Content-type', 'application/json');
+    console.log(tribute);
 
     return this.http.post(backendURL + 'taxes/', body, {headers: headers})
   }

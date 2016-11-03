@@ -6,8 +6,7 @@ import { Property } from '../taxpayers/property';
 import { Owner } from '../taxpayers/owner';
 import { Company } from '../taxpayers/company';
 
-// let backendURL = "http://localhost:8000/";
-let backendURL = "//88.99.15.137/";
+let backendURL = "http://localhost:8000/";
 
 @Injectable()
 export class PropertyService{
@@ -23,6 +22,8 @@ export class PropertyService{
     const body = JSON.stringify(property);
     const headers = new Headers();
     headers.append('Content-type', 'application/json');
+    console.log(property);
+
 
     return this.http.post(backendURL + 'properties/', body, {headers: headers})
   }
