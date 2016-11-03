@@ -53,7 +53,7 @@ export class EstablishmentFormComponent implements OnInit {
     this.establishmentService.add(this.establishmentForm.value).subscribe(
       (resp: Response) => console.log(resp.json())
     );
-    this.router.navigate(['/taxpayers/establishments']);
+    this.router.navigate(['/establishments']);
   }
 
 }

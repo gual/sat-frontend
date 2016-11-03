@@ -61,7 +61,7 @@ export class PropertyFormComponent implements OnInit {
     this.propertyService.add(this.propertyForm.value).subscribe(
       (resp: Response) => console.log(resp.json())
     );
-    this.router.navigate(['/taxpayers/properties']);
+    this.router.navigate(['/properties']);
   }
 
 }
