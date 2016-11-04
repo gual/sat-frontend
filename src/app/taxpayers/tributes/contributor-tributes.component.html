@@ -1,0 +1,43 @@
+<h2>{{contributor?.code}}</h2>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h4 class="panel-title" style="color:white;">
+      Tributos
+    </h4>
+  </div>
+  <div class="panel-collapse form-inline">
+    <div class="panel-body">
+      <div class="form-group">
+        <select [(ngModel)]="selectedTribute" class="form-control">
+          <option *ngFor="let t of tributes" [ngValue]="t">{{t.name}}</option>
+        </select>
+      </div>
+      <button class="btn btn-success" (click)="associateTribute()" [disabled]="selectedTribute == null">
+        Asociar
+      </button>
+      <hr />
+      <div *ngIf="contributor?.tributes.length > 0">
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Tributos asociados</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cTribute of contributor.tributes">
+              <td>{{cTribute.name}}</td>
+              <td>
+                <a class="btn btn-primary btn-xs" (click)='disassociateTribute(cTribute.id)'><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div *ngIf="contributor?.tributes.length <= 0">
+        <h5>No tiene tributos asociados.</h5>
+      </div>
+    </div>
+  </div>
+</div>

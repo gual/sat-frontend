@@ -19,6 +19,7 @@
       <td>{{establishment.person.nit}}</td>
       <td>{{establishment.person.name + ' ' + establishment.person.surname}}</td>
       <td>
+        <a class="btn btn-primary btn-xs" [routerLink]="['/establishments/tributes', establishment.id]"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a>
         <!--<a class="btn btn-primary btn-xs" href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
         <a class="btn btn-primary btn-xs" href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>-->
       </td>

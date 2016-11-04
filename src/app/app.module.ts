@@ -23,6 +23,9 @@ import { EstablishmentListComponent } from './taxpayers/establishment/establishm
 import { EstablishmentFormComponent } from './taxpayers/establishment/establishment-form.component';
 import { EstablishmentService } from './shared/EstablishmentService';
 import { DeclarationComponent } from './declaration/declaration.component';
+import { ContributorTributesComponent } from './taxpayers/tributes/contributor-tributes.component';
+import { PropertyTributesComponent } from './taxpayers/property/property-tributes.component';
+import { EstablishmentTributesComponent } from './taxpayers/establishment/establishment-tributes.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,11 @@ import { DeclarationComponent } from './declaration/declaration.component';
     EstablishmentSearchComponent,
     EstablishmentListComponent,
     EstablishmentFormComponent,
-    DeclarationComponent
+    DeclarationComponent,
+    TributesComponent,
+    ContributorTributesComponent,
+    PropertyTributesComponent,
+    EstablishmentTributesComponent
   ],
   imports: [
     BrowserModule,

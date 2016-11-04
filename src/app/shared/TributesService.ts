@@ -19,6 +19,7 @@ let rateDeterminants: any[] = [];
 let subjectDeterminants: any[] = [];
 
 let backendURL = "http://88.99.15.137/";
+// let backendURL = "http://localhost:8000/";
 
 @Injectable()
 export class TributesService{
@@ -32,7 +33,7 @@ export class TributesService{
   }
 
   getTribute(id: string) : any {
-    return this.http.get('https://mutis-prototype.firebaseio.com/tributes/' + id + '.json').map(
+    return this.http.get(backendURL + 'taxes/' + id).map(
       (response: Response) => response.json()
     );
   }

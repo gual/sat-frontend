@@ -20,7 +20,6 @@ export class TributesListComponent implements OnInit {
       data => {
         console.log(data);
         for (let key in data){
-          data[key].id = key
           this.tributes.push(data[key]);
         }
       }

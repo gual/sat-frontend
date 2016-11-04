@@ -19,7 +19,6 @@ export class PropertyListComponent implements OnInit {
       data => {
         console.log(data);
         for (let key in data){
-          data[key].id = key
           this.properties.push(data[key]);
         }
       }

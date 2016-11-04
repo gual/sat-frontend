@@ -17,9 +17,7 @@ export class EstablishmentListComponent implements OnInit {
     this.establishmentService.getAll()
     .subscribe(
       data => {
-        console.log(data);
         for (let key in data){
-          data[key].id = key
           this.establishments.push(data[key]);
         }
       }
