@@ -1,5 +1,40 @@
-<h3> {{selectedTribute?.name}} - {{selectedTribute?.origin_law}} </h3>
+<h3> {{selectedTribute?.name}} <span class="label label-info label-list"> {{selectedTribute?.short_name}} </span></h3>
 <hr />
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">General</h3>
+  </div>
+  <div class="panel-body">
+    <dl class="dl-horizontal">
+      <dt>Ley Origen</dt>
+      <dd>{{selectedTribute?.origin_law}}</dd>
+      <dt>Días de gracia</dt>
+      <dd>{{selectedTribute?.grace_days}}</dd>
+      <dt>Sujeto</dt>
+      <dd *ngIf="selectedTribute?.taxable_subject == 'E'">Establecimientos</dd>
+      <dd *ngIf="selectedTribute?.taxable_subject == 'P'">Inmuebles</dd>
+      <dt>Determinantes</dt>
+      <dd>
+        <table class="table table-hover table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Condición</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let subDeterminant of selectedTribute?.determinants">
+              <td>{{subDeterminant.name}}</td>
+              <td>{{subDeterminant.condition}}</td>
+              <td>{{subDeterminant.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </dd>
+    </dl>
+  </div>
+</div>
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="panel-title">Declaración y Pagos</h3>
@@ -46,25 +81,64 @@
 </div>
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <h3 class="panel-title">Modo de Cálculo</h3>
+    <h3 class="panel-title">Tarifa</h3>
   </div>
   <div class="panel-body">
     <dl class="dl-horizontal">
       <dt>Vigente hasta</dt>
-      <dd>{{selectedTribute?.calculation.validUntil}}</dd>
-      <dt>Cuota Fija</dt>
-      <dd>{{selectedTribute?.calculation.fixedFee}}</dd>
-      <dt>Cuota Variable</dt>
-      <dd>{{selectedTribute?.calculation.variableFee}}</dd>
-      <dt>Formula</dt>
-      <dd>{{selectedTribute?.calculation.formula}}</dd>
-      <dt>Determinantes</dt>
+      <dd>{{selectedTribute?.rate.valid_until}}</dd>
+      <dd>{{selectedTribute?.rate.description}}</dd>
+      <dt>Tokens</dt>
       <dd>
         <ul>
-          <li *ngFor="let determinant of selectedTribute?.determinants">
-            {{determinant.description}} - {{determinant.condition}}
+          <li *ngFor="let token of selectedTribute?.rate.tokens">
+           <b>{{token.name}}</b>
           </li>
         </ul>
+      </dd>
+      <dt>Formula</dt>
+      <dd>{{selectedTribute?.rate.formula}}</dd>
+      <dt>Determinantes</dt>
+      <dd>
+        <table class="table table-hover table-striped table-bordered" *ngIf="selectedTribute?.rate.determinants > 0">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Condición</th>
+              <th>Valor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rateDeterminants of selectedTribute?.rate.determinants">
+              <td>{{rateDeterminants.name}}</td>
+              <td>{{rateDeterminants.condition}}</td>
+              <td>{{rateDeterminants.value}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </dd>
+      <dt>Rangos</dt>
+      <dd>
+        <table class="table table-hover table-striped table-bordered" *ngIf="selectedTribute?.rate.ranges > 0">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>L. Inferior</th>
+              <th>L. Superior</th>
+              <th>C. Fija</th>
+              <th>C. Variable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let rateRange of selectedTribute?.rate.ranges">
+              <td>{{rateRange.description}}</td>
+              <td>{{rateRange.lower}}</td>
+              <td>{{rateRange.upper}}</td>
+              <td>{{rateRange.fixed}}</td>
+              <td>{{rateRange.variable}}</td>
+            </tr>
+          </tbody>
+        </table>
       </dd>
     </dl>
   </div>
