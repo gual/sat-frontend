@@ -54,7 +54,7 @@
               </div>
               <div class="form-group">
                 <label for="sub_det_value">Valor </label>
-                <input class="form-control" type="text" name="sub_det_value" #subDetValue>
+                <input class="form-control" type="number" step="0.00001" min="0" name="sub_det_value" #subDetValue>
               </div>
               <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value, subDetValue.value)" >
                 Agregar determinante
@@ -225,7 +225,7 @@
               </div>
               <div class="form-group">
                 <label for="rate_det_value">Valor </label>
-                <input class="form-control" type="text" name="rate_det_value" #rateDetValue>
+                <input class="form-control" type="number" step="0.00001" min="0" name="rate_det_value" #rateDetValue>
               </div>
               <a class="btn btn-warning btn-xs" (click)="addRateDeterminant(rateDetDescription.value, rateDetCondition.value, rateDetValue.value)" >
                 Agregar determinante
@@ -268,19 +268,19 @@
               </div>
               <div class="form-group">
                 <label for="rate_range_upper">Limite Superior </label>
-                <input class="form-control" type="number" name="rate_range_upper" #rateRangeUpper>
+                <input class="form-control" type="number" step="0.01" min="0" name="rate_range_upper" #rateRangeUpper>
               </div>
               <div class="form-group">
                 <label for="rate_range_lower">Limite Inferior </label>
-                <input class="form-control" type="number" name="rate_range_lower" #rateRangeLower>
+                <input class="form-control" type="number" step="0.01" min="0" name="rate_range_lower" #rateRangeLower>
               </div>
               <div class="form-group">
                 <label for="rate_range_fixed">Cuota fija </label>
-                <input class="form-control" type="number" name="rate_range_fixed" #rateRangeFixed>
+                <input class="form-control" type="number" step="0.01" min="0" name="rate_range_fixed" #rateRangeFixed>
               </div>
               <div class="form-group">
                 <label for="rate_range_var">Cuota variable </label>
-                <input class="form-control" type="number" name="rate_range_var" #rateRangeVariable>
+                <input class="form-control" type="number" step="0.000001" min="0" name="rate_range_var" #rateRangeVariable>
               </div>
               <a class="btn btn-info btn-xs"
                 (click)="addRateRange(
