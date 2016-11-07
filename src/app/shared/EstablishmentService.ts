@@ -6,6 +6,7 @@ import { Establishment } from '../taxpayers/establishment';
 import { Owner } from '../taxpayers/owner';
 import { Company } from '../taxpayers/company';
 
+// let backendURL = "http://localhost:8000/establishments/";
 let backendURL = "http://88.99.15.137/establishments/";
 
 @Injectable()

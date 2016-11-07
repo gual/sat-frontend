@@ -90,9 +90,10 @@ export class TributesService{
   addFromForm(form: NgForm) {
     let tribute = {
       name: form.value.name,
+      short_name: form.value.short_name,
       origin_law: form.value.law,
       taxable_subject: form.value.subject,
-      grace_days: form.value.graceDays,
+      grace_days: form.value.grace_days,
       taxable_income: {
         name: form.value.ti_name,
         description: form.value.ti_description,

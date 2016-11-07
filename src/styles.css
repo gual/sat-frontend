@@ -11,3 +11,7 @@
 h3.panel-title, h4.panel-title {
     color:white;
 }
+
+.label.label-list {
+    margin: 1px;
+}

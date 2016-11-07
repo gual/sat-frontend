@@ -22,12 +22,14 @@
           <thead>
             <tr>
               <th>Tributos asociados</th>
+              <th>Nombre Corto</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let cTribute of contributor.tributes">
               <td>{{cTribute.name}}</td>
+              <td><span class="label label-info">{{cTribute.short_name}}</span></td>
               <td>
                 <a class="btn btn-primary btn-xs" (click)='disassociateTribute(cTribute.id)'><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
               </td>
