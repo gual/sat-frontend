@@ -32,6 +32,7 @@ export class TributesService{
     headers.append('Content-type', 'application/json');
     console.log("sending:" + body);
 
+
     return this.http.post(url, body, {headers: headers})
   }
 
@@ -106,6 +107,19 @@ export class TributesService{
   }
 
   addFromForm(form: NgForm) {
+    let generateDate = (month, day) => {
+      let genDate = new Date();
+      genDate.setMonth(month);
+      genDate.setDate(day);
+      return genDate.toISOString().slice(0, 10);
+    }
+
+    let declaration_since = generateDate(form.value.dec_since_month, form.value.dec_since_day);
+    let declaration_until = generateDate(form.value.dec_until_month, form.value.dec_until_day);
+
+    let payment_since = generateDate(form.value.pay_since_month, form.value.pay_since_day);
+    let payment_until = generateDate(form.value.pay_until_month, form.value.pay_until_day);
+
     let taxableIncome = {
       name: form.value.ti_name,
       description: form.value.ti_description,
@@ -128,11 +142,11 @@ export class TributesService{
       grace_days: form.value.grace_days,
       declaration_payment_mode: {
         declaration_periodicity: form.value.dec_periodicity,
-        declaration_since: form.value.dec_since,
-        declaration_until: form.value.dec_until,
+        declaration_since: declaration_since,
+        declaration_until: declaration_until,
         payment_periodicity: form.value.pay_periodicity,
-        payment_since: form.value.pay_since,
-        payment_until: form.value.pay_until
+        payment_since: payment_since,
+        payment_until: payment_until
       },
       determinants: subjectDeterminants,
       rate_id: 0,

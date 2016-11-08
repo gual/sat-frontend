@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
           <label for="short_name">Nombre corto </label>
-          <input class="form-control" type="text" name="short_name" ngModel required>
+          <input class="form-control" type="text" maxlength="6" name="short_name" ngModel required>
         </div>
         <div class="form-group">
           <label for="law">Ley origen </label>
@@ -102,12 +102,20 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="dec_since">Primer día para declarar </label>
-          <input class="form-control" type="number" name="dec_since" ngModel required>
+          <label for="dec_since_month">Mes inicial para declaración </label>
+          <input class="form-control" type="number" min="1" max="12" name="dec_since_month" ngModel required>
         </div>
         <div class="form-group">
-          <label for="dec_until">Último día para declarar </label>
-          <input class="form-control" type="number" name="dec_until" ngModel required>
+          <label for="dec_since_day">Día inicial para declaración </label>
+          <input class="form-control" type="number" min="1" max="12" name="dec_since_day" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="dec_until_month">Mes final para declaración </label>
+          <input class="form-control" type="number" min="1" max="12" name="dec_until_month" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="dec_until_day">Día final para declaración </label>
+          <input class="form-control" type="number" min="1" max="12" name="dec_until_day" ngModel required>
         </div>
         <div class="form-group">
           <label for="pay_periodicity">Periodicidad pago </label>
@@ -118,12 +126,20 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="pay_since">Primer día para pagar </label>
-          <input class="form-control" type="number" name="pay_since" ngModel required>
+          <label for="pay_since_month">Mes inicial para pago </label>
+          <input class="form-control" type="number" min="1" max="12" name="pay_since_month" ngModel required>
         </div>
         <div class="form-group">
-          <label for="pay_until">Último día para pagar </label>
-          <input class="form-control" type="number" name="pay_until" ngModel required>
+          <label for="pay_since_day">Día inicial para pago </label>
+          <input class="form-control" type="number" min="1" max="12" name="pay_since_day" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="pay_until_month">Mes final para pago </label>
+          <input class="form-control" type="number" min="1" max="12" name="pay_until_month" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="pay_until_day">Día final para pago </label>
+          <input class="form-control" type="number" min="1" max="12" name="pay_until_day" ngModel required>
         </div>
       </div>
     </div>
