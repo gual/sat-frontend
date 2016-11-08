@@ -100,7 +100,7 @@
       <dd>{{selectedTribute?.rate.formula}}</dd>
       <dt>Determinantes</dt>
       <dd>
-        <table class="table table-hover table-striped table-bordered" *ngIf="selectedTribute?.rate.determinants > 0">
+        <table class="table table-hover table-striped table-bordered">
           <thead>
             <tr>
               <th>Descripción</th>
@@ -119,7 +119,7 @@
       </dd>
       <dt>Rangos</dt>
       <dd>
-        <table class="table table-hover table-striped table-bordered" *ngIf="selectedTribute?.rate.ranges > 0">
+        <table class="table table-hover table-striped table-bordered">
           <thead>
             <tr>
               <th>Nombre</th>
@@ -131,11 +131,11 @@
           </thead>
           <tbody>
             <tr *ngFor="let rateRange of selectedTribute?.rate.ranges">
-              <td>{{rateRange.description}}</td>
-              <td>{{rateRange.lower}}</td>
-              <td>{{rateRange.upper}}</td>
-              <td>{{rateRange.fixed}}</td>
-              <td>{{rateRange.variable}}</td>
+              <td>{{rateRange.name}}</td>
+              <td>{{rateRange.lower_limit}}</td>
+              <td>{{rateRange.upper_limit}}</td>
+              <td>{{rateRange.fixed_amount}}</td>
+              <td>{{rateRange.variable_amount}}</td>
             </tr>
           </tbody>
         </table>

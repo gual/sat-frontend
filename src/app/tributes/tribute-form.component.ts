@@ -51,6 +51,6 @@ export class TributeFormComponent implements OnInit {
   }
 
   addRateRange(description: string, upper: string, lower: string, fixed: string, variable: string) {
-    this._tributesService.addRateRange({description: description, upper: upper, lower: lower, fixed: fixed, variable: variable});
+    this._tributesService.addRateRange({name: description, upper_limit: upper, lower_limit: lower, fixed_amount: fixed, variable_amount: variable});
   }
 }
