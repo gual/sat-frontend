@@ -13,25 +13,27 @@
       <dt>Sujeto</dt>
       <dd *ngIf="selectedTribute?.taxable_subject == 'E'">Establecimientos</dd>
       <dd *ngIf="selectedTribute?.taxable_subject == 'P'">Inmuebles</dd>
-      <dt>Determinantes</dt>
-      <dd>
-        <table class="table table-hover table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>Descripción</th>
-              <th>Condición</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let subDeterminant of selectedTribute?.determinants">
-              <td>{{subDeterminant.name}}</td>
-              <td>{{subDeterminant.condition}}</td>
-              <td>{{subDeterminant.value}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </dd>
+      <div *ngIf="selectedTribute?.determinats > 0">
+        <dt>Determinantes</dt>
+        <dd>
+          <table class="table table-hover table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Descripción</th>
+                <th>Condición</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let subDeterminant of selectedTribute?.determinants">
+                <td>{{subDeterminant.name}}</td>
+                <td>{{subDeterminant.condition}}</td>
+                <td>{{subDeterminant.value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </dd>
+      </div>
     </dl>
   </div>
 </div>
@@ -43,16 +45,16 @@
     <dl class="dl-horizontal">
       <dt>Periodicidad declaración</dt>
       <dd>{{selectedTribute?.declaration_payment_mode.declaration_periodicity}}</dd>
-      <dt>Primer día para declarar</dt>
-      <dd>{{selectedTribute?.declaration_payment_mode.declaration_since}}</dd>
-      <dt>Último día para declarar</dt>
-      <dd>{{selectedTribute?.declaration_payment_mode.declaration_until}}</dd>
+      <dt>Fecha inicial para declarar</dt>
+      <dd>{{selectedTribute?.declaration_payment_mode.declaration_since|date:'d/M'}}</dd>
+      <dt>Fecha final para declarar</dt>
+      <dd>{{selectedTribute?.declaration_payment_mode.declaration_until|date:'d/M'}}</dd>
       <dt>Periodicidad pago</dt>
       <dd>{{selectedTribute?.declaration_payment_mode.payment_periodicity}}</dd>
-      <dt>Primer día para pagar</dt>
-      <dd>{{selectedTribute?.declaration_payment_mode.payment_since}}</dd>
-      <dt>Último día para pagar</dt>
-      <dd>{{selectedTribute?.declaration_payment_mode.payment_until}}</dd>
+      <dt>Fecha inicial para pagar</dt>
+      <dd>{{selectedTribute?.declaration_payment_mode.payment_since|date:'d/M'}}</dd>
+      <dt>Fecha final para pagar</dt>
+      <dd>{{selectedTribute?.declaration_payment_mode.payment_until|date:'d/M'}}</dd>
     </dl>
   </div>
 </div>
@@ -70,12 +72,12 @@
       <dd>
         <ul>
           <li *ngFor="let token of selectedTribute?.taxable_income.tokens">
-           <b>{{token.name}}</b>
+           <b style="font-family:monospace;">{{token.name}}</b>
           </li>
         </ul>
       </dd>
       <dt>Formula</dt>
-      <dd>{{selectedTribute?.taxable_income.formula}}</dd>
+      <dd style="font-family:monospace;">{{selectedTribute?.taxable_income.formula}}</dd>
     </dl>
   </div>
 </div>
@@ -92,54 +94,58 @@
       <dd>
         <ul>
           <li *ngFor="let token of selectedTribute?.rate.tokens">
-           <b>{{token.name}}</b>
+           <b style="font-family:monospace;">{{token.name}}</b>
           </li>
         </ul>
       </dd>
       <dt>Formula</dt>
-      <dd>{{selectedTribute?.rate.formula}}</dd>
-      <dt>Determinantes</dt>
-      <dd>
-        <table class="table table-hover table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>Descripción</th>
-              <th>Condición</th>
-              <th>Valor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let rateDeterminants of selectedTribute?.rate.determinants">
-              <td>{{rateDeterminants.name}}</td>
-              <td>{{rateDeterminants.condition}}</td>
-              <td>{{rateDeterminants.value}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </dd>
-      <dt>Rangos</dt>
-      <dd>
-        <table class="table table-hover table-striped table-bordered">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>L. Inferior</th>
-              <th>L. Superior</th>
-              <th>C. Fija</th>
-              <th>C. Variable</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let rateRange of selectedTribute?.rate.ranges">
-              <td>{{rateRange.name}}</td>
-              <td>{{rateRange.lower_limit}}</td>
-              <td>{{rateRange.upper_limit}}</td>
-              <td>{{rateRange.fixed_amount}}</td>
-              <td>{{rateRange.variable_amount}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </dd>
+      <dd style="font-family:monospace;">{{selectedTribute?.rate.formula}}</dd>
+      <div *ngIf="selectedTribute?.rate.determinants > 0">
+        <dt>Determinantes</dt>
+        <dd>
+          <table class="table table-hover table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Descripción</th>
+                <th>Condición</th>
+                <th>Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rateDeterminants of selectedTribute?.rate.determinants">
+                <td>{{rateDeterminants.name}}</td>
+                <td>{{rateDeterminants.condition}}</td>
+                <td>{{rateDeterminants.value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </dd>
+      </div>
+      <div *ngIf="selectedTribute?.rate.ranges > 0">
+        <dt>Rangos</dt>
+        <dd>
+          <table class="table table-hover table-striped table-bordered">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>L. Inferior</th>
+                <th>L. Superior</th>
+                <th>C. Fija</th>
+                <th>C. Variable</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let rateRange of selectedTribute?.rate.ranges">
+                <td>{{rateRange.name}}</td>
+                <td>{{rateRange.lower_limit}}</td>
+                <td>{{rateRange.upper_limit}}</td>
+                <td>{{rateRange.fixed_amount}}</td>
+                <td>{{rateRange.variable_amount}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </dd>
+      </div>
     </dl>
   </div>
 </div>
