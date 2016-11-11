@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
+import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
 
 import { Property } from '../taxpayers/property';
 import { Owner } from '../taxpayers/owner';
 import { Company } from '../taxpayers/company';
 
-// let backendURL = "http://localhost:8000/properties/";
-let backendURL = "http://88.99.15.137/properties/";
+let backendURL = environment.backendUrl + "properties/";
 
 @Injectable()
 export class PropertyService{

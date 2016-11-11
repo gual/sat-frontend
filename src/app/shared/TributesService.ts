@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
+import { environment } from '../../environments/environment';
 import 'rxjs/Rx';
 
 import { NgForm } from '@angular/forms';
@@ -18,8 +19,7 @@ let rateRanges: any[] = [];
 let rateDeterminants: any[] = [];
 let subjectDeterminants: any[] = [];
 
-let backendURL = "http://88.99.15.137/";
-// let backendURL = "http://localhost:8000/";
+let backendURL = environment.backendUrl;
 
 @Injectable()
 export class TributesService{
@@ -37,6 +37,7 @@ export class TributesService{
   }
 
   getAll() {
+    console.log("Connecting to: " + backendURL);
     return this.http.get(backendURL + 'taxes/').map(
       (response: Response) => response.json()
     );
