@@ -13,7 +13,7 @@
       <dt>Sujeto</dt>
       <dd *ngIf="selectedTribute?.taxable_subject == 'E'">Establecimientos</dd>
       <dd *ngIf="selectedTribute?.taxable_subject == 'P'">Inmuebles</dd>
-      <div *ngIf="selectedTribute?.determinats > 0">
+      <div *ngIf="selectedTribute?.determinants.length > 0">
         <dt>Determinantes</dt>
         <dd>
           <table class="table table-hover table-striped table-bordered">
@@ -87,7 +87,7 @@
   </div>
   <div class="panel-body">
     <dl class="dl-horizontal">
-      <dt>Vigente hasta</dt>
+      <!--<dt>Vigente hasta</dt>-->
       <dd>{{selectedTribute?.rate.valid_until}}</dd>
       <dd>{{selectedTribute?.rate.description}}</dd>
       <dt>Tokens</dt>
@@ -100,7 +100,7 @@
       </dd>
       <dt>Formula</dt>
       <dd style="font-family:monospace;">{{selectedTribute?.rate.formula}}</dd>
-      <div *ngIf="selectedTribute?.rate.determinants > 0">
+      <div *ngIf="selectedTribute?.rate.determinants.length > 0">
         <dt>Determinantes</dt>
         <dd>
           <table class="table table-hover table-striped table-bordered">
@@ -121,7 +121,7 @@
           </table>
         </dd>
       </div>
-      <div *ngIf="selectedTribute?.rate.ranges > 0">
+      <div *ngIf="selectedTribute?.rate.ranges.length > 0">
         <dt>Rangos</dt>
         <dd>
           <table class="table table-hover table-striped table-bordered">
