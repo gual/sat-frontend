@@ -640,10 +640,7 @@
                 <input class="form-control" name="{{rateToken.name}}">
               </div>
               <a class="btn btn-info btn-xs"
-                (click)="addRateRange(
-                  rateRangeDescription.value, rateRangeUpper.value, rateRangeLower.value,
-                  rateRangeFixed.value, rateRangeVariable.value
-                )" >
+                (click)="addRateRange(rateRangeDescription.value, rateRangeUpper.value, rateRangeLower.value)" >
                 Agregar rango
               </a>
               <div *ngIf="rateRanges.length > 0">
