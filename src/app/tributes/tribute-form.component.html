@@ -2,6 +2,7 @@
 <hr />
 <form class="panel" (ngSubmit)="addTribute(f)" #f="ngForm">
 
+  <!--General-->
   <div class="panel panel-primary">
     <div class="panel-heading">
       <a data-toggle="collapse" href="#generalPanel">
@@ -23,11 +24,7 @@
           <input class="form-control" type="text" name="law" ngModel required>
         </div>
         <div class="form-group">
-          <label for="grace_days">Días de gracia para generar interés </label>
-          <input class="form-control" type="number" name="grace_days" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="subject">Sujeto al que aplica </label>
+          <label for="subject">Tipo Sujeto </label>
           <select name="subject" class="form-control" ngModel required>
             <option value="E">Establecimientos</option>
             <option value="P">Inmuebles</option>
@@ -45,20 +42,30 @@
           <div id="subjectDeterminants" class="panel-collapse collapse">
             <div class="panel-body">
               <div class="form-group">
-                <label for="sub_det_description">Nombre </label>
-                <input class="form-control" type="text" name="sub_det_description" #subDetDescription>
+                <label for="sub_det_token">Token </label>
+                <input class="form-control" type="text" name="sub_det_token" #subDetToken>
               </div>
-              <div class="form-group">
-                <label for="sub_det_condition">Condicion </label>
-                <input class="form-control" type="text" name="sub_det_condition" #subDetCondition>
+              <a class="btn btn-success btn-xs" (click)="addSubDetToken(subDetToken.value)" >Agregar token</a>
+              <hr />
+              <div class="form-inline">
+                <div class="form-group">
+                  <label for="sub_det_description">Token </label>
+                  <select name="sub_det_description" class="form-control" ngModel #subDetDescription>
+                    <option *ngFor="let subDetToken of subDetTokens" value="{{subDetToken.name}}" >{{subDetToken.name}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="sub_det_condition">Condicion </label>
+                  <input class="form-control" type="text" name="sub_det_condition" #subDetCondition>
+                </div>
+                <div class="form-group">
+                  <label for="sub_det_value">Valor </label>
+                  <input class="form-control" type="number" step="0.00001" min="0" name="sub_det_value" #subDetValue>
+                </div>
+                <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value, subDetValue.value)" >
+                  Agregar determinante
+                </a>
               </div>
-              <div class="form-group">
-                <label for="sub_det_value">Valor </label>
-                <input class="form-control" type="number" step="0.00001" min="0" name="sub_det_value" #subDetValue>
-              </div>
-              <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value, subDetValue.value)" >
-                Agregar determinante
-              </a>
               <div *ngIf="subjectDeterminants.length > 0">
                 <table class="table table-hover table-striped table-bordered">
                   <thead>
@@ -81,14 +88,20 @@
           </div>
         </div>
 
+        <div class="form-group">
+          <label class="checkbox-inline">
+            <input type="checkbox" id="hasDeclaration" [(ngModel)]="hasDeclaration" name="hasDeclaration"> ¿Tiene declaración?
+          </label>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="panel panel-primary">
+  <!--Declaration-->
+  <div class="panel panel-primary" *ngIf="hasDeclaration">
     <div class="panel-heading">
       <a data-toggle="collapse" href="#declarationPanel">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Declaración y Pagos</h3>
+        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Declaración</h3>
       </a>
     </div>
     <div id="declarationPanel" class="panel-collapse collapse">
@@ -103,44 +116,324 @@
         </div>
         <div class="form-group">
           <label for="dec_since_month">Mes inicial para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_since_month" ngModel required>
+          <select name="dec_since_month" class="form-control" ngModel>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+          <!--<input class="form-control" type="number" min="1" max="12" name="dec_since_month" ngModel required>-->
         </div>
         <div class="form-group">
           <label for="dec_since_day">Día inicial para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_since_day" ngModel required>
+          <input class="form-control" type="number" min="1" max="31" name="dec_since_day" ngModel>
         </div>
         <div class="form-group">
           <label for="dec_until_month">Mes final para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_until_month" ngModel required>
+          <select name="dec_until_month" class="form-control" ngModel>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+          <!--<input class="form-control" type="number" min="1" max="12" name="dec_until_month" ngModel required>-->
         </div>
         <div class="form-group">
           <label for="dec_until_day">Día final para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_until_day" ngModel required>
+          <input class="form-control" type="number" min="1" max="31" name="dec_until_day" ngModel>
+        </div>
+        <div class="form-group">
+          <label for="fiscal_since_month">Mes Inicial - Año Fiscal </label>
+          <select name="fiscal_since_month" class="form-control" ngModel>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="fiscal_until_month">Mes Final - Año Fiscal </label>
+          <select name="fiscal_until_month" class="form-control" ngModel>
+            <option value="1">Enero</option>
+            <option value="2">Febrero</option>
+            <option value="3">Marzo</option>
+            <option value="4">Abril</option>
+            <option value="5">Mayo</option>
+            <option value="6">Junio</option>
+            <option value="7">Julio</option>
+            <option value="8">Agosto</option>
+            <option value="9">Septiembre</option>
+            <option value="10">Octubre</option>
+            <option value="11">Noviembre</option>
+            <option value="12">Diciembre</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--payments-->
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <a data-toggle="collapse" href="#paymentPanel">
+        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Pagos</h3>
+      </a>
+    </div>
+    <div id="paymentPanel" class="panel-collapse collapse">
+      <div class="panel-body">
+        <div class="form-group">
+          <label for="grace_days">Días de gracia para generar interés </label>
+          <input class="form-control" type="number" name="grace_days" ngModel required>
         </div>
         <div class="form-group">
           <label for="pay_periodicity">Periodicidad pago </label>
-          <select name="pay_periodicity" class="form-control" ngModel>
+          <select name="pay_periodicity" class="form-control" [(ngModel)]='pay_periodicity'>
             <option value="1">Mensual</option>
             <option value="3">Trimestral</option>
             <option value="12">Anual</option>
           </select>
         </div>
-        <div class="form-group">
-          <label for="pay_since_month">Mes inicial para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_since_month" ngModel required>
+
+        <!--periodicities-->
+        <div class="panel panel-success" *ngIf='pay_periodicity'>
+          <div class="panel-heading">
+            <a data-toggle="collapse" href="#periods">
+              <h4 class="panel-title" style="color:white;">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Períodos
+              </h4>
+            </a>
+          </div>
+          <div id="periods" class="panel-collapse collapse">
+            <div class="panel-body">
+
+              <div *ngIf='pay_periodicity == 1'>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="janPeriod" [(ngModel)]="janPeriod" name="janPeriod"> Enero
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="febPeriod" [(ngModel)]="febPeriod" name="febPeriod"> Febrero
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="marPeriod" [(ngModel)]="marPeriod" name="marPeriod"> Marzo
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="aprPeriod" [(ngModel)]="aprPeriod" name="aprPeriod"> Abril
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="mayPeriod" [(ngModel)]="mayPeriod" name="mayPeriod"> Mayo
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="junPeriod" [(ngModel)]="junPeriod" name="junPeriod"> Junio
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="julPeriod" [(ngModel)]="julPeriod" name="julPeriod"> Julio
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="augPeriod" [(ngModel)]="augPeriod" name="augPeriod"> Agosto
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="sepPeriod" [(ngModel)]="sepPeriod" name="sepPeriod"> Septiembre
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="octPeriod" [(ngModel)]="octPeriod" name="octPeriod"> Octubre
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="novPeriod" [(ngModel)]="novPeriod" name="novPeriod"> Noviembre
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="decPeriod" [(ngModel)]="decPeriod" name="decPeriod"> Diciembre
+                  </label>
+                </div>
+              </div>
+
+              <div *ngIf='pay_periodicity == 3'>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="q1Period" [(ngModel)]="q1Period" name="q1Period"> Q1
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="q2Period" [(ngModel)]="q2Period" name="q2Period"> Q2
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="q3Period" [(ngModel)]="q3Period" name="q3Period"> Q3
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" id="q4Period" [(ngModel)]="q4Period" name="aprPeriod"> Q4
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-inline" *ngIf='pay_periodicity == 12'>
+                <div class="form-group">
+                  <label for="pay_since_month">Mes inicial para pago </label>
+                  <input class="form-control" type="number" min="1" max="12" name="pay_since_month" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="pay_since_day">Día inicial para pago </label>
+                  <input class="form-control" type="number" min="1" max="31" name="pay_since_day" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="pay_until_month">Mes final para pago </label>
+                  <input class="form-control" type="number" min="1" max="12" name="pay_until_month" ngModel>
+                </div>
+                <div class="form-group">
+                  <label for="pay_until_day">Día final para pago </label>
+                  <input class="form-control" type="number" min="1" max="31" name="pay_until_day" ngModel>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="pay_since_day">Día inicial para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_since_day" ngModel required>
+
+        <!--interest ranges-->
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <a data-toggle="collapse" href="#interestRangePanel">
+              <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Rangos de interés
+              </h4>
+            </a>
+          </div>
+          <div id="interestRangePanel" class="panel-collapse collapse form-inline">
+            <div class="panel-body">
+              <div class="form-group">
+                <label for="int_range_upper">Limite Superior </label>
+                <input class="form-control" type="number" step="0.01" min="0" name="int_range_upper" #intRangeUpper>
+              </div>
+              <div class="form-group">
+                <label for="int_range_lower">Limite Inferior </label>
+                <input class="form-control" type="number" step="0.01" min="0" name="int_range_lower" #intRangeLower>
+              </div>
+              <div class="form-group">
+                <label for="int_range_val">Valor </label>
+                <input class="form-control" type="number" step="0.00001" min="0" name="int_range_val" #intRangeVal>
+              </div>
+              <a class="btn btn-info btn-xs" (click)='addIntRange(intRangeUpper.value, intRangeLower.value, intRangeVal.value)'>
+                Agregar rango
+              </a>
+              <div *ngIf="intRanges?.length > 0">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>L. Superior</th>
+                      <th>L. Inferior</th>
+                      <th>Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let intRange of intRanges">
+                      <td>{{intRange.upper}}</td>
+                      <td>{{intRange.lower}}</td>
+                      <td>{{intRange.val}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="pay_until_month">Mes final para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_until_month" ngModel required>
+
+        <!--penalties ranges-->
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <a data-toggle="collapse" href="#penaltiesRangePanel">
+              <h4 class="panel-title">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Rangos de multas
+              </h4>
+            </a>
+          </div>
+          <div id="penaltiesRangePanel" class="panel-collapse collapse form-inline">
+            <div class="panel-body">
+              <div class="form-group">
+                <label for="pen_range_upper">Limite Superior </label>
+                <input class="form-control" name="pen_range_upper" #penRangeUpper>
+              </div>
+              <div class="form-group">
+                <label for="pen_range_lower">Limite Inferior </label>
+                <input class="form-control" name="pen_range_lower" #penRangeLower>
+              </div>
+              <div class="form-group">
+                <label for="pen_range_val">Valor </label>
+                <input class="form-control" name="pen_range_val" #penRangeVal>
+              </div>
+              <a class="btn btn-info btn-xs" (click)='addPenRange(penRangeUpper.value, penRangeLower.value, penRangeVal.value)'>
+                Agregar rango
+              </a>
+              <div *ngIf="penRanges?.length > 0">
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>L. Superior</th>
+                      <th>L. Inferior</th>
+                      <th>Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let penRange of penRanges">
+                      <td>{{penRange.upper}}</td>
+                      <td>{{penRange.lower}}</td>
+                      <td>{{penRange.val}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="pay_until_day">Día final para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_until_day" ngModel required>
-        </div>
+
       </div>
     </div>
   </div>
@@ -159,7 +452,7 @@
         </div>
         <div class="form-group">
           <label for="ti_description">Descripción </label>
-          <input class="form-control" type="text" name="ti_description" ngModel required>
+          <input class="form-control" type="text" name="ti_description" ngModel>
         </div>
 
         <div class="form-group">
@@ -179,6 +472,55 @@
           <label for="ti_formula">Formula </label>
           <input class="form-control" type="text" name="ti_formula" ngModel required>
         </div>
+
+
+        <div class="panel panel-warning">
+          <div class="panel-heading">
+            <a data-toggle="collapse" href="#tiDeterminants">
+              <h4 class="panel-title" style="color:white;">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Determinantes de Base Imponible
+              </h4>
+            </a>
+          </div>
+          <div id="tiDeterminants" class="panel-collapse collapse">
+            <div class="panel-body">
+              <div class="form-group">
+                <label for="ti_det_description">Nombre </label>
+                <input class="form-control" type="text" name="ti_det_description" #tiDetDescription>
+              </div>
+              <div class="form-group">
+                <label for="ti_det_condition">Condicion </label>
+                <input class="form-control" type="text" name="ti_det_condition" #tiDetCondition>
+              </div>
+              <div class="form-group">
+                <label for="ti_det_value">Valor </label>
+                <input class="form-control" type="number" step="0.00001" min="0" name="ti_det_value" #tiDetValue>
+              </div>
+              <a class="btn btn-warning btn-xs">
+                Agregar determinante
+              </a>
+              <div>
+                <table class="table table-hover table-striped table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Descripción</th>
+                      <th>Condición</th>
+                      <th>Valor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let tiDeterminant of tiDeterminants">
+                      <td>{{tiDeterminant.name}}</td>
+                      <td>{{tiDeterminant.condition}}</td>
+                      <td>{{tiDeterminant.value}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -191,17 +533,19 @@
     </div>
     <div id="ratePanel" class="panel-collapse collapse">
       <div class="panel-body">
-        <!--<div class="form-group">
+        <div class="form-group">
           <label for="rate_type">Tipo </label>
-          <select name="rate_type" class="form-control">
-            <option>Valor determinado</option>
-            <option>Progresiva por rango</option>
-          </select>
-        </div>-->
+          <label class="radio-inline">
+            <input type="radio" [(ngModel)]="rateType" name="rateType" id="normalRate" value="normal"> Valor determinado
+          </label>
+          <label class="radio-inline">
+            <input type="radio" [(ngModel)]="rateType" name="rateType" id="progresiveRate" value="progresive" ngModel> Progresiva por rango
+          </label>
+        </div>
         <!--<div class="form-group">
-          <label for="c_valid_until">Vigente hasta </label>
-          <input class="form-control" type="text" name="c_valid_until" ngModel>
         </div>-->
+          <!--<label for="c_valid_until">Vigente hasta </label>
+          <input class="form-control" type="text" name="c_valid_until" ngModel>-->
 
         <div class="form-group">
           <label for="rateToken">Token </label>
@@ -268,7 +612,7 @@
           </div>
         </div>
 
-        <div class="panel panel-info">
+        <div class="panel panel-info" *ngIf="rateType == 'progresive'">
           <div class="panel-heading">
             <a data-toggle="collapse" href="#rateRangePanel">
               <h4 class="panel-title">
@@ -290,13 +634,10 @@
                 <label for="rate_range_lower">Limite Inferior </label>
                 <input class="form-control" type="number" step="0.01" min="0" name="rate_range_lower" #rateRangeLower>
               </div>
-              <div class="form-group">
-                <label for="rate_range_fixed">Cuota fija </label>
-                <input class="form-control" type="number" step="0.01" min="0" name="rate_range_fixed" #rateRangeFixed>
-              </div>
-              <div class="form-group">
-                <label for="rate_range_var">Cuota variable </label>
-                <input class="form-control" type="number" step="0.000001" min="0" name="rate_range_var" #rateRangeVariable>
+
+              <div *ngFor="let rateToken of rateTokens" class="form-group">
+                <label>{{rateToken.name}} </label>
+                <input class="form-control" name="{{rateToken.name}}">
               </div>
               <a class="btn btn-info btn-xs"
                 (click)="addRateRange(
@@ -312,8 +653,6 @@
                       <th>Nombre</th>
                       <th>L. Superior</th>
                       <th>L. Inferior</th>
-                      <th>C. Fija</th>
-                      <th>C. Variable</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -321,8 +660,6 @@
                       <td>{{rateRange.name}}</td>
                       <td>{{rateRange.upper_limit}}</td>
                       <td>{{rateRange.lower_limit}}</td>
-                      <td>{{rateRange.fixed_amount}}</td>
-                      <td>{{rateRange.variable_amount}}</td>
                     </tr>
                   </tbody>
                 </table>
@@ -330,6 +667,7 @@
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>

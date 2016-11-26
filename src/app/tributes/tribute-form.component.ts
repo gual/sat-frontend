@@ -15,18 +15,28 @@ import { TributesService } from '../shared/TributesService';
 export class TributeFormComponent implements OnInit {
   tokens: Token[] = [];
   rateTokens: Token[] = [];
+  subDetTokens: Token[] = [];
   rateRanges: Token[] = [];
   rateDeterminants: any[] = [];
   subjectDeterminants: any[] = [];
+
+  payPeriods: any[] = [];
+  intRanges: any[] = [];
+  penRanges: any[] = [];
 
   constructor(private _tributesService: TributesService, private router: Router) { }
 
   ngOnInit() {
     this.tokens = this._tributesService.getTokens();
+    this.subDetTokens = this._tributesService.getSubDetTokens();
     this.rateTokens = this._tributesService.getRateTokens();
     this.rateDeterminants = this._tributesService.getRateDeterminants();
     this.rateRanges = this._tributesService.getRateRanges();
     this.subjectDeterminants = this._tributesService.getSubjectDeterminants();
+
+    this.payPeriods = this._tributesService.getPayPeriods();
+    this.intRanges = this._tributesService.getIntRanges();
+    this.penRanges = this._tributesService.getPenRanges();
   }
 
   addTribute(form: NgForm) {
@@ -36,6 +46,10 @@ export class TributeFormComponent implements OnInit {
 
   addToken(text: string) {
     this._tributesService.addToken({name: text});
+  }
+
+  addSubDetToken(text: string) {
+    this._tributesService.addSubDetToken({name: text});
   }
 
   addRateToken(text: string) {
@@ -52,5 +66,17 @@ export class TributeFormComponent implements OnInit {
 
   addRateRange(description: string, upper: string, lower: string, fixed: string, variable: string) {
     this._tributesService.addRateRange({name: description, upper_limit: upper, lower_limit: lower, fixed_amount: fixed, variable_amount: variable});
+  }
+
+  addPayPeriod({}) {
+    this._tributesService.addPayPeriod({});
+  }
+
+  addIntRange(upper: string, lower: string, val: string) {
+    this._tributesService.addIntRange({upper: upper, lower: lower, val: val});
+  }
+
+  addPenRange(upper: string, lower: string, val: string) {
+    this._tributesService.addPenRange({upper: upper, lower: lower, val: val});
   }
 }
