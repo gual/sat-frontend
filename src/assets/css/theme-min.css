@@ -1,0 +1,71 @@
+/* CSS Document */
+
+body {
+    background-color: #efefef;
+}
+.navbar {
+    border-radius: 0;
+	box-shadow: none;
+}
+/*.panel.panel-default > .panel-heading {
+    background-color: #999999;
+}*/
+.panel.panel-default > .panel-heading {
+    background-color: #ffffff;
+/*    border-bottom: 1px solid #eeeeee;*/
+	box-shadow: none;
+    background: none;
+}
+/*.panel.panel-default > .panel-heading > .panel-title {
+	color: white;
+}*/
+.panel.panel-default > .panel-heading > .panel-title {
+	color: black;
+	font-weight: 300;
+	    font-size: 28px;
+		    border-bottom: 1px solid #25bce9;
+    display: inline;
+    padding-bottom: 11px;
+}
+.pagination.pagination-default > .active > a, .pagination.pagination-default > .active > a:focus, .pagination.pagination-default > .active > a:hover, .pagination.pagination-default > .active > span, .pagination.pagination-default > .active > span:focus, .pagination.pagination-default > .active > span:hover {
+    background-color: #999999;
+    border-color: #999999;
+    box-shadow: 0 4px 5px 0 rgba(100, 100, 100, 0.14), 0 1px 10px 0 rgba(100, 100, 100, 0.12), 0 2px 4px -1px rgba(100, 100, 100, 0.2);
+}
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    background-color: #fff;
+}
+.panel {
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 3px 1px -2px rgba(0, 0, 0, 0.05), 0 1px 5px 0 rgba(0, 0, 0, 0.05);
+	box-shadow: none;
+    background: none;
+	margin-top: 40px;
+}
+.navbar {
+	margin-bottom: 0px;
+}
+/*.form-control:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+}*/
+.navbar .navbar-brand {
+    padding: 0px 15px;
+}
+.grey {
+	background-color: #efefef;
+}
+.white {
+	background-color: #ffffff;
+}
+.form-control {
+    margin-bottom: 7px;
+    border: 1px solid #ddd;
+    padding-left: 10px;
+/*    background-color: #f5f5f5;*/
+    background-image: none;
+	border-radius: 3px;
+}
+select.form-control {
+    border: 1px solid #ddd;
+}

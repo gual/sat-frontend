@@ -1,0 +1,52 @@
+<div id="osTableHeader" class="container scrollable-table ng-scope affix-top">
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row table-header">
+          <div class="col-sm-1">Tributo </div>
+          <div class="col-sm-1">Nombre Corto </div>
+          <div class="col-sm-1">Base Imponible </div>
+          <div class="col-sm-4">Descripción </div>
+          <div class="col-sm-2">Formula Calculo </div>
+          <div class="col-sm-2">Ley origen </div>
+          <div class="col-sm-1 hidden-xs"><a class="btn btn-default btn-xs pull-right" [routerLink]="['/tributes/new']"> <i class="material-icons">add</i> Agregar </a> </div>
+          <div class="col-sm-1 hidden-sm"><a class="btn btn-default btn-xs pull-right" [routerLink]="['/tributes/new']"> <i class="material-icons">add</i></a> </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div id="osTableBody" class="container table-body ng-scope">
+  <div class="row listado-row ng-scope" *ngFor="let tribute of tributes">
+    <div class="col-md-12">
+      <div class="row listado-row-content">
+        <div class="col-sm-1">{{tribute.name}} </div>
+        <div class="col-sm-1"><span class="label label-info">{{tribute.short_name}}</span> </div>
+        <div class="col-sm-1">{{tribute.taxable_income.name}} </div>
+        <div class="col-sm-4">{{tribute.taxable_income.description}} </div>
+        <div class="col-sm-2"><code>{{tribute.rate.formula}}</code> </div>
+        <div class="col-sm-2">{{tribute.origin_law}} </div>
+        <div class="col-sm-1"><a type="button" rel="tooltip" title="Detalle" class="btn btn-danger btn-simple btn-xs" [routerLink]="['/tributes/detail', tribute.id]"> <i class="material-icons">info_outline</i> </a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<nav aria-label="Page navigation" class="pull-right">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>-->

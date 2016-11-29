@@ -1,4 +1,4 @@
-<table class="table table-hover">
+<table class="table table-striped table-hover">
   <thead>
     <tr>
       <th>Código</th>
@@ -6,7 +6,7 @@
       <th>Dueño</th>
       <th>Tributos</th>
       <th>
-        <a class="btn btn-success btn-xs" [routerLink]="['/properties/new']"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Agregar</a>
+        <a class="btn btn-default btn-simple btn-xs info-sole pull-right" [routerLink]="['/properties/new']"><i class="material-icons">add_circle</i></a>
       </th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
          <span class="label label-info label-list" *ngFor="let tribute of property.tributes">{{tribute.short_name}}</span>
       </td>
       <td>
-        <a class="btn btn-primary btn-xs" [routerLink]="['/properties/tributes', property.id]"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> Tributos</a>
+        <a class="btn btn-default btn-xs pull-right" [routerLink]="['/properties/tributes', property.id]"><i class="material-icons">assignment</i> Tributos</a>
       </td>
     </tr>
   </tbody>

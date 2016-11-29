@@ -1,64 +1,74 @@
-<h2>Nuevo Tributo</h2>
-<hr />
-<form class="panel" (ngSubmit)="addTribute(f)" #f="ngForm">
-
+ <div class="row">
+  <div class="col-md-3">
+    <h2>Nuevo Tributo</h2>
+  </div>
+  <div class="col-md-2">
+	  <button type="submit" class="btn-rounded"><i class="material-icons">save</i></button>
+  </div>
+</div>
+<form class="panel" (ngSubmit)="addTribute(f)" #f="ngForm"> 
   <div class="panel panel-primary">
-    <div class="panel-heading">
-      <a data-toggle="collapse" href="#generalPanel">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> General</h3>
-      </a>
-    </div>
+    <div class="panel-heading"> <a data-toggle="collapse" href="#generalPanel">
+      <h3 class="panel-title"><i class="material-icons">keyboard_arrow_down</i>General</h3>
+      </a> </div>
     <div id="generalPanel" class="panel-collapse collapse in">
       <div class="panel-body">
-        <div class="form-group">
-          <label for="name">Tributo </label>
-          <input class="form-control" type="text" name="name" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="short_name">Nombre corto </label>
-          <input class="form-control" type="text" maxlength="6" name="short_name" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="law">Ley origen </label>
-          <input class="form-control" type="text" name="law" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="grace_days">Días de gracia para generar interés </label>
-          <input class="form-control" type="number" name="grace_days" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="subject">Sujeto al que aplica </label>
-          <select name="subject" class="form-control" ngModel required>
-            <option value="E">Establecimientos</option>
-            <option value="P">Inmuebles</option>
-          </select>
-        </div>
-
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <a data-toggle="collapse" href="#subjectDeterminants">
-              <h4 class="panel-title" style="color:white;">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Determinantes de sujeto
-              </h4>
-            </a>
+        <div class="row">
+          <div class="col-md-6">
+           <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Tributo" type="text" name="name" ngModel required>
+            </div>
           </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Nombre corto" type="text" maxlength="6" name="short_name" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Ley origen" type="text" name="law" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Días de gracia para generar interés" type="number" name="grace_days" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <label for="subject">Sujeto al que aplica </label>
+              <select name="subject" class="form-control" ngModel required>
+				  <option value="Sujeto al que aplica">Sujeto al que aplica</option>
+                <option value="E">Establecimientos</option>
+                <option value="P">Otros</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-warning">
+          <div class="panel-heading subpanel determinantes"> <a data-toggle="collapse" href="#subjectDeterminants">
+            <h4 class="panel-title" style="color:white;"> <i class="material-icons">add</i>Determinantes de sujeto</h4>
+            </a> </div>
           <div id="subjectDeterminants" class="panel-collapse collapse">
             <div class="panel-body">
-              <div class="form-group">
-                <label for="sub_det_description">Nombre </label>
-                <input class="form-control" type="text" name="sub_det_description" #subDetDescription>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group label-floating has-info">
+                    <input class="form-control" placeholder="Nombre" type="text" name="sub_det_description" #subDetDescription>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group label-floating has-info">
+                    <input class="form-control" placeholder="Condicion" type="text" name="sub_det_condition" #subDetCondition>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group label-floating has-info">
+                    <input class="form-control" placeholder="Valor" type="number" step="0.00001" min="0" name="sub_det_value" #subDetValue>
+                  </div>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="sub_det_condition">Condicion </label>
-                <input class="form-control" type="text" name="sub_det_condition" #subDetCondition>
-              </div>
-              <div class="form-group">
-                <label for="sub_det_value">Valor </label>
-                <input class="form-control" type="number" step="0.00001" min="0" name="sub_det_value" #subDetValue>
-              </div>
-              <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value, subDetValue.value)" >
-                Agregar determinante
-              </a>
+              <a class="btn btn-warning btn-xs" (click)="addSubjectDeterminant(subDetDescription.value, subDetCondition.value, subDetValue.value)" > Agregar determinante </a>
               <div *ngIf="subjectDeterminants.length > 0">
                 <table class="table table-hover table-striped table-bordered">
                   <thead>
@@ -80,93 +90,104 @@
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
-
   <div class="panel panel-primary">
-    <div class="panel-heading">
-      <a data-toggle="collapse" href="#declarationPanel">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Declaración y Pagos</h3>
-      </a>
-    </div>
+    <div class="panel-heading"> <a data-toggle="collapse" href="#declarationPanel">
+      <h3 class="panel-title"><i class="material-icons">keyboard_arrow_down</i>Declaración y Pagos</h3>
+      </a> </div>
     <div id="declarationPanel" class="panel-collapse collapse">
       <div class="panel-body">
-        <div class="form-group">
-          <label for="dec_periodicity">Periodicidad declaración </label>
-          <select name="dec_periodicity" class="form-control" ngModel>
-            <option value="1">Mensual</option>
-            <option value="3">Trimestral</option>
-            <option value="12">Anual</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="dec_since_month">Mes inicial para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_since_month" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="dec_since_day">Día inicial para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_since_day" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="dec_until_month">Mes final para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_until_month" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="dec_until_day">Día final para declaración </label>
-          <input class="form-control" type="number" min="1" max="12" name="dec_until_day" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="pay_periodicity">Periodicidad pago </label>
-          <select name="pay_periodicity" class="form-control" ngModel>
-            <option value="1">Mensual</option>
-            <option value="3">Trimestral</option>
-            <option value="12">Anual</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="pay_since_month">Mes inicial para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_since_month" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="pay_since_day">Día inicial para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_since_day" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="pay_until_month">Mes final para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_until_month" ngModel required>
-        </div>
-        <div class="form-group">
-          <label for="pay_until_day">Día final para pago </label>
-          <input class="form-control" type="number" min="1" max="12" name="pay_until_day" ngModel required>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <label for="dec_periodicity">Periodicidad declaración </label>
+              <select name="dec_periodicity" class="form-control" ngModel>
+                <option value="1">Mensual</option>
+                <option value="3">Trimestral</option>
+                <option value="12">Anual</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Mes inicial para declaración" type="number" min="1" max="12" name="dec_since_month" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Día inicial para declaración" type="number" min="1" max="12" name="dec_since_day" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Mes final para declaración" type="number" min="1" max="12" name="dec_until_month" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+           <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Día final para declaración" type="number" min="1" max="12" name="dec_until_day" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <label for="pay_periodicity">Periodicidad pago </label>
+              <select name="pay_periodicity" class="form-control" ngModel>
+                <option value="1">Mensual</option>
+                <option value="3">Trimestral</option>
+                <option value="12">Anual</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Mes inicial para pago" type="number" min="1" max="12" name="pay_since_month" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Día inicial para pago" type="number" min="1" max="12" name="pay_since_day" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Mes final para pago" type="number" min="1" max="12" name="pay_until_month" ngModel required>
+            </div>
+          </div>
+          <div class="col-md-6">
+           <div class="form-group label-floating has-info">
+              <input class="form-control" placeholder="Día final para pago" type="number" min="1" max="12" name="pay_until_day" ngModel required>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-
   <div class="panel panel-primary">
-    <div class="panel-heading">
-      <a data-toggle="collapse" href="#taxablePanel">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Base Imponible</h3>
-      </a>
-    </div>
-    <div id="taxablePanel" class="panel-collapse collapse">
-      <div class="panel-body">
-        <div class="form-group">
-          <label for="ti_name">Nombre </label>
-          <input class="form-control" type="text" name="ti_name" ngModel required>
+  <div class="panel-heading"> <a data-toggle="collapse" href="#taxablePanel">
+    <h3 class="panel-title"><i class="material-icons">keyboard_arrow_down</i>Base Imponible</h3>
+    </a> </div>
+  <div id="taxablePanel" class="panel-collapse collapse">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group label-floating has-info">
+          <input class="form-control" placeholder="Nombre" type="text" name="ti_name" ngModel required>
         </div>
-        <div class="form-group">
-          <label for="ti_description">Descripción </label>
-          <input class="form-control" type="text" name="ti_description" ngModel required>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group label-floating has-info">
+          <input class="form-control" placeholder="Descripción" type="text" name="ti_description" ngModel required>
         </div>
-
-        <div class="form-group">
-          <label for="token">Token </label>
-          <input class="form-control" type="text" name="token" #token ngModel>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group label-floating has-info">
+          <input class="form-control" placeholder="Token" type="text" name="token" #token ngModel>
         </div>
-        <a class="btn btn-success btn-xs" (click)="addToken(token.value)" >Agregar token</a>
+      </div>
+      <div class="row">
+      <div class="col-md-6"> <a class="btn btn-success btn-xs" (click)="addToken(token.value)" >Agregar token</a>
         <div>
           <ul>
             <li *ngFor="let token of tokens">
@@ -175,37 +196,36 @@
           </ul>
         </div>
 
-        <div class="form-group">
+      </div>
+		  <div class="col-md-6">        <div class="form-group label-floating has-info">
           <label for="ti_formula">Formula </label>
           <input class="form-control" type="text" name="ti_formula" ngModel required>
-        </div>
-      </div>
+        </div></div>
+		</div>
     </div>
   </div>
-
+	  </div>
+	</div>
   <div class="panel panel-primary">
-    <div class="panel-heading">
-      <a data-toggle="collapse" href="#ratePanel">
-        <h3 class="panel-title"><span class="glyphicon glyphicon-chevron-down"></span> Tarifa</h3>
-      </a>
-    </div>
+    <div class="panel-heading"> <a data-toggle="collapse" href="#ratePanel">
+      <h3 class="panel-title"><i class="material-icons">keyboard_arrow_down</i>Tarifa</h3>
+      </a> </div>
     <div id="ratePanel" class="panel-collapse collapse">
-      <div class="panel-body">
+      <div class="panel-body"> 
         <!--<div class="form-group">
           <label for="rate_type">Tipo </label>
           <select name="rate_type" class="form-control">
             <option>Valor determinado</option>
             <option>Progresiva por rango</option>
           </select>
-        </div>-->
+        </div>--> 
         <!--<div class="form-group">
           <label for="c_valid_until">Vigente hasta </label>
           <input class="form-control" type="text" name="c_valid_until" ngModel>
         </div>-->
-
+        
         <div class="form-group">
-          <label for="rateToken">Token </label>
-          <input class="form-control" type="text" name="rateToken" #rateToken>
+          <input class="form-control" placeholder="Token" type="text" name="rateToken" #rateToken>
         </div>
         <a class="btn btn-success btn-xs" (click)="addRateToken(rateToken.value)" >Agregar token</a>
         <div>
@@ -215,37 +235,34 @@
             </li>
           </ul>
         </div>
-
-        <div class="form-group">
-          <label for="rate_formula">Formula </label>
-          <input class="form-control" type="text" name="rate_formula" ngModel required>
+        <div class="form-group label-floating has-info">
+          <input class="form-control" placeholder="Formula" type="text" name="rate_formula" ngModel required>
         </div>
-
         <div class="panel panel-warning">
-          <div class="panel-heading">
-            <a data-toggle="collapse" href="#rateDetPanel">
-              <h4 class="panel-title">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Determinantes de tarifa
-              </h4>
-            </a>
-          </div>
+          <div class="panel-heading subpanel determinantes"> <a data-toggle="collapse" href="#rateDetPanel">
+            <h4 class="panel-title"> <i class="material-icons">add</i>Determinantes de tarifa </h4>
+            </a> </div>
           <div id="rateDetPanel" class="panel-collapse collapse">
             <div class="panel-body">
-              <div class="form-group">
-                <label for="rate_det_description">Nombre </label>
-                <input class="form-control" type="text" name="rate_det_description" #rateDetDescription>
+             <div class="row">
+             <div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Nombre" type="text" name="rate_det_description" #rateDetDescription>
               </div>
-              <div class="form-group">
-                <label for="rate_det_condition">Condicion </label>
-                <input class="form-control" type="text" name="rate_det_condition" #rateDetCondition>
+				 </div>
+             <div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Condicion" type="text" name="rate_det_condition" #rateDetCondition>
               </div>
-              <div class="form-group">
-                <label for="rate_det_value">Valor </label>
-                <input class="form-control" type="number" step="0.00001" min="0" name="rate_det_value" #rateDetValue>
               </div>
-              <a class="btn btn-warning btn-xs" (click)="addRateDeterminant(rateDetDescription.value, rateDetCondition.value, rateDetValue.value)" >
-                Agregar determinante
-              </a>
+             <div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Valor" type="number" step="0.00001" min="0" name="rate_det_value" #rateDetValue>
+              </div>
+              </div>
+            <div class="row">
+             <div class="col-md-6">
+              <a class="btn btn-warning btn-xs" (click)="addRateDeterminant(rateDetDescription.value, rateDetCondition.value, rateDetValue.value)" > Agregar determinante </a>
               <div *ngIf="rateDeterminants.length > 0">
                 <table class="table table-hover table-striped table-bordered">
                   <thead>
@@ -264,47 +281,51 @@
                   </tbody>
                 </table>
               </div>
+				 </div>
+				 </div>
+				</div>
             </div>
           </div>
         </div>
-
         <div class="panel panel-info">
-          <div class="panel-heading">
-            <a data-toggle="collapse" href="#rateRangePanel">
-              <h4 class="panel-title">
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Rangos
-              </h4>
-            </a>
-          </div>
+          <div class="panel-heading subpanel rangos"> <a data-toggle="collapse" href="#rateRangePanel">
+            <h4 class="panel-title"><i class="material-icons">add</i>Rangos</h4>
+            </a> </div>
           <div id="rateRangePanel" class="panel-collapse collapse">
             <div class="panel-body">
-              <div class="form-group">
-                <label for="rate_range_description">Nombre </label>
-                <input class="form-control" type="text" name="rate_range_description" #rateRangeDescription>
+             <div class="row">
+      		<div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Nombre" type="text" name="rate_range_description" #rateRangeDescription>
               </div>
-              <div class="form-group">
-                <label for="rate_range_upper">Limite Superior </label>
-                <input class="form-control" type="number" step="0.01" min="0" name="rate_range_upper" #rateRangeUpper>
+				 </div>
+             <div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Limite Superior" type="number" step="0.01" min="0" name="rate_range_upper" #rateRangeUpper>
               </div>
-              <div class="form-group">
-                <label for="rate_range_lower">Limite Inferior </label>
-                <input class="form-control" type="number" step="0.01" min="0" name="rate_range_lower" #rateRangeLower>
+               </div>
+             <div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Limite Inferior" type="number" step="0.01" min="0" name="rate_range_lower" #rateRangeLower>
               </div>
-              <div class="form-group">
-                <label for="rate_range_fixed">Cuota fija </label>
-                <input class="form-control" type="number" step="0.01" min="0" name="rate_range_fixed" #rateRangeFixed>
+               </div>
+             <div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Cuota fija" type="number" step="0.01" min="0" name="rate_range_fixed" #rateRangeFixed>
               </div>
-              <div class="form-group">
-                <label for="rate_range_var">Cuota variable </label>
-                <input class="form-control" type="number" step="0.000001" min="0" name="rate_range_var" #rateRangeVariable>
+               </div>
+             <div class="col-md-6">
+              <div class="form-group label-floating has-info">
+                <input class="form-control" placeholder="Cuota variable" type="number" step="0.000001" min="0" name="rate_range_var" #rateRangeVariable>
               </div>
+               </div>
+				<div class="row">
+             <div class="col-md-6">
               <a class="btn btn-info btn-xs"
                 (click)="addRateRange(
                   rateRangeDescription.value, rateRangeUpper.value, rateRangeLower.value,
                   rateRangeFixed.value, rateRangeVariable.value
-                )" >
-                Agregar rango
-              </a>
+                )" > Agregar rango </a>
               <div *ngIf="rateRanges.length > 0">
                 <table class="table table-hover table-striped table-bordered">
                   <thead>
@@ -328,13 +349,14 @@
                 </table>
               </div>
             </div>
+				 </div>
+				</div>
+			  </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  <button type="submit" class="btn btn-primary">Guardar</button>
-  <button type="reset" class="btn btn-success">Limpiar</button>
-  <a [routerLink]="['']" class="btn btn-info">Regresar</a>
+  
+  <button type="submit" class="btn-rounded"><i class="material-icons">save</i></button>
 </form>

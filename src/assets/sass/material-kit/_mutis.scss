@@ -1,0 +1,146 @@
+body {
+    color: #000;
+}
+#osTableHeader {
+    background-color: #fff;
+    z-index: 999;
+	font-weight: 500;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    &.affix-top {
+	}
+
+&.affix {
+    top: 36px;
+    width: 100%;
+	}
+}
+
+.listado-row:nth-child(odd) .listado-row-content {
+    background-color: #f7f7f7;
+}
+.listado-row-content {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.searchblock {
+	margin-bottom: 10px;
+}
+.navbar {
+    padding-bottom: 0px;
+}
+.navbar .navbar-nav > .active > a, .navbar .navbar-nav > .active > a:hover, .navbar .navbar-nav > .active > a:focus {
+    color: $bordeau;
+    background-color: rgb(239, 239, 239);
+}
+.navbar.navbar-inverse {
+    background-color: $bordeau;
+}
+
+.navbar .navbar-nav > li > a {
+    border-radius: 3px 3px 0px 0px;
+}
+
+.search-block {
+	padding: 20px 0px;
+}
+.btn-xs.add-sole, .btn-xs.info-sole {
+	padding: 2px 0px 0px 2px;
+}
+li.loginblock {
+	margin-left: 40px;
+	a{
+	text-transform: none !important;
+	font-size: small !important;
+	}
+	i{
+		vertical-align: middle;
+	}
+	
+}
+.togglebutton label input[type=checkbox]:checked + .toggle {
+    background-color: $green;
+}
+.togglebutton label input[type=checkbox]:checked + .toggle:after {
+    border-color:  $green;
+}
+.table{
+	>thead{
+		>tr{
+			>th{
+				background-color: white;
+   				border: none;
+				padding: 0px 10px;
+    			vertical-align: middle;
+				
+			}
+		}
+	}
+}
+
+
+	.btn{
+    // Align icons inside buttons with text
+    .material-icons{
+        font-size: 22px;
+    }
+	}
+
+.panel.panel-primary {
+	    margin-bottom: 0px;
+    margin-top: 10px;
+	> .panel-heading {
+    background-color: #f9f9f9;
+		h3.panel-title, h4.panel-title{
+			color: $bordeau;
+    		font-weight: 500;
+			
+		}
+}
+}
+.btn-rounded {
+	background-color: $grey-400;
+    color: white;
+    border-radius: 50%;
+    border: none;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    line-height: 42px;
+	margin-top: 25px;
+	&:hover {
+	background-color: $grey-600;	
+	}
+}
+a:focus, a:hover {
+    text-decoration: none;
+}
+.panel-heading {
+	&.subpanel{
+		padding: 3px;
+		.panel-title{
+			font-size: 14px;
+		}
+	}
+}
+.form-control::-webkit-input-placeholder { color: #333; }
+.form-control:-moz-placeholder { color: #333; }
+.form-control::-moz-placeholder { color: #333; }
+.form-control:-ms-input-placeholder { color: #333; }
+.inmuebles-group .form-group {
+	margin-top: 10px;
+}
+.form-group.form-group-no-margin {
+    margin:0px;
+}
+.panel-heading{
+	&.determinantes {
+	background-color: #9eb6c1;
+}
+
+}
+.panel-heading{
+	&.rancos {
+	background-color: #87c9e6;
+	}
+}
