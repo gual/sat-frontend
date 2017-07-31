@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  backendUrl: "http://localhost:8000/api/"
+  // backendUrl: "http://localhost:8000/api/"
+  backendUrl: "https://mutis-prototype.firebaseio.com/"
 };
