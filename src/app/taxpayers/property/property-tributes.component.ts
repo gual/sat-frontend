@@ -15,7 +15,7 @@ import { PropertyService } from '../../shared/PropertyService';
 export class PropertyTributesComponent implements OnInit {
   propertyId : number;
 
-  constructor(private propertyService: PropertyService, private currentRoute: ActivatedRoute) {
+  constructor(public propertyService: PropertyService, private currentRoute: ActivatedRoute) {
     this.propertyId = currentRoute.snapshot.params['id'];
   }
 

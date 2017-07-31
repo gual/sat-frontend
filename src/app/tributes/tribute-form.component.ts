@@ -19,6 +19,10 @@ export class TributeFormComponent implements OnInit {
   rateRanges: Token[] = [];
   rateDeterminants: any[] = [];
   subjectDeterminants: any[] = [];
+  hasDeclaration: any;
+  pay_periodicity: any;
+  rateType: any;
+  tiDeterminants: any;
 
   payPeriods: any[] = [];
   intRanges: any[] = [];
