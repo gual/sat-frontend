@@ -15,7 +15,7 @@ import { EstablishmentService } from '../../shared/EstablishmentService';
 export class EstablishmentTributesComponent implements OnInit {
   establishmentId : number;
 
-  constructor(private establishmentService: EstablishmentService, private currentRoute: ActivatedRoute) {
+  constructor(public establishmentService: EstablishmentService, private currentRoute: ActivatedRoute) {
     this.establishmentId = currentRoute.snapshot.params['id'];
   }
 
